@@ -1,0 +1,11 @@
+.label{
+    color: yellow;  /* ne s'affiche pas => garde couleur Pico par defaut */
+}
+
+body{
+    justify-content: center;
+}
+
+.container{
+    width: 35%;
+}
