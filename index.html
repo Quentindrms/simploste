@@ -8,8 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/pico.min.css"> <!-- Importation de pico css-->
-    <link rel="stylesheet" href="./custom.css"> <!-- Importation des styles customs -->
+    <!-- Importation des styles customs -->
     <link rel="stylesheet" href="css/pico.yellow.min.css">
+    <link rel="stylesheet" href="./custom.css">
     <title>Document</title>
 </head>
 
@@ -21,16 +22,18 @@
     </nav>
 
     <main>
-        <form class="container">
 
-            <div class="container-form">
+        <h2 class="form-title">Réserver votre voyage</h2>
+        <form class="containe-fluid">
+
+            <div class="container container-form">
                 <label for="prenom">Prénom :</label>
                 <input type="text" id="prenom" name="prenom" required>
 
                 <label for="nom">Nom :</label>
                 <input type="text" id="nom" name="nom" required>
 
-                <label for="age">Age :</label>
+                <label for="age">Date de naissance :</label>
                 <input type="date" id="age" name="age" required>
 
                 <label for="email">Adresse e-mail :</label>
@@ -40,7 +43,7 @@
                 <input type="tel" id="tel" name="tel" required>
             </div>
 
-            <div class="">
+            <div class="container container-form">
                 <label for="villeArrivee">Ville d'arrivée :</label>
                 <select id="villeArrivee" name="villeArrivee" aria-label="Ville d'arrivée" required>
                     <option value="" selected disabled>--Veuillez choisir--</option>
@@ -58,9 +61,11 @@
 
                 <label for="depart">Date et heure de départ:</label>
                 <input type="datetime-local" id="depart" name="depart" aria-label="">
-            </div>
 
-            <input type="submit" method="post">
+
+                <input type="submit" method="post" class="bnt-submit">
+
+            </div>
 
         </form>
     </main>
