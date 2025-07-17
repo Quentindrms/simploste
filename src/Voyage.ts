@@ -5,7 +5,7 @@ export class Voyage {
   destination: string;
   classe: string;
   reduc: boolean;
-  voyageurId: number;  // <- ajouté
+  voyageurId: number;
 
   constructor(
     id: number,
@@ -14,7 +14,7 @@ export class Voyage {
     destination: string,
     classe: string,
     reduc: boolean,
-    voyageurId: number  // <- ajouté
+    voyageurId: number
   ) {
     this.id = id;
     this.date = date;
@@ -22,11 +22,36 @@ export class Voyage {
     this.destination = destination;
     this.classe = classe;
     this.reduc = reduc;
-    this.voyageurId = voyageurId;  // <- assigné
+    this.voyageurId = voyageurId;
   }
 
   calculPrix(): number {
-    // FORMULE LOGIQUE DE CALCUL PRIX CF MIND MAP
-    return 0;
+    let prixBase: number;
+    let classeindice: number = 1;
+    let reduction: number = 1;
+    let prixtotal: number; 
+    const pkm: number = 1;
+    const distance: number = 1;
+    let animaloption: number = 25
+    // Exemple de base de prix pour trajet longueur
+    prixBase = distance * pkm 
+
+
+    // Exemple de base de prix selon la classe:
+    
+      prixBase = prixBase * classeindice; // classe par défaut
+    
+    prixtotal = prixBase * reduction + animaloption;
+    return prixtotal
+
+    
   }
+
+   // FORMULE LOGIQUE DE CALCUL PRIX CF MIND MAP
+  //  calcul price ( nbre voy X (prixtajet) X reduc X coefclasse
+//si present) + options ( animal,...)   
+   // return 0;
+
 }
+
+   

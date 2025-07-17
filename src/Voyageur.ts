@@ -6,16 +6,16 @@ export class Voyageur {
   id: number; // Un seul id, pas besoin de idvoyageur
   nom: string;
   prenom: string;
-  dateNaissance: Date | null;
+  dateNaissance?: Date;
   email: string;
   telephone: string;
 
   constructor(
     nom: string,
     prenom: string,
-    dateNaissance: Date | null,
     email: string,
-    telephone: string
+    telephone: string,
+    dateNaissance?: Date,
   ) {
     this.id = Voyageur.compteur++;
     this.nom = nom;
@@ -58,6 +58,9 @@ export class Voyageur {
 
   // Infos complètes voyageur
   getinfosvoyageur(): string {
+
+    // LOCAL STORAGE LOCAL STORAGE localStorage.setItem("hello", "Hello, world !")
+
     const date = this.dateNaissance
       ? this.dateNaissance.toLocaleDateString()
       : "Date inconnue";
@@ -69,19 +72,23 @@ export class Voyageur {
   }
 
   ////////////////////////PARTIE INFOS CODE//////////////////
-  //CODE POUR INFO:
-  attributioncode(): string {
-    // LOGIQUE INDEX DONNE CODE FROM AAA, AAB,.. TO ZZZ
-    return "";
-  }
+  
+// Générateur pseudo-aléatoire basé sur un entier
+  mulberry32(a: number) {
+    let t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  } 
+
 
   //INFOS PAR CODE:
   getinfosparcode(
-    idVoyage: number,
+    id: number,
     voyages: Voyage[],
     voyageurs: Voyageur[]
   ): string {
-    const voyage = voyages.find((v) => v.id === idVoyage);
+    const voyage = voyages.find((v) => v.id === id);
     if (!voyage) return "Voyage non trouvé";
 
     const voyageur = voyageurs.find((v) => v.id === voyage.voyageurId);
