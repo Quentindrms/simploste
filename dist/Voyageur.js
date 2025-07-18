@@ -1,6 +1,8 @@
 import { Voyage } from "Voyage";
 export class Voyageur {
-    constructor(nom, prenom, dateNaissance, email, telephone) {
+
+    constructor(nom, prenom, email, telephone, dateNaissance) {
+main
         this.id = Voyageur.compteur++;
         this.nom = nom;
         this.prenom = prenom;
@@ -30,20 +32,27 @@ export class Voyageur {
     }
     // Infos complètes voyageur
     getinfosvoyageur() {
+
+        // LOCAL STORAGE LOCAL STORAGE localStorage.setItem("hello", "Hello, world !")
+main
         const date = this.dateNaissance
             ? this.dateNaissance.toLocaleDateString()
             : "Date inconnue";
         return `ID ${this.id} - ${this.getnomcomplet()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
     }
     ////////////////////////PARTIE INFOS CODE//////////////////
-    //CODE POUR INFO:
-    attributioncode() {
-        // LOGIQUE INDEX DONNE CODE FROM AAA, AAB,.. TO ZZZ
-        return "";
+
+    // Générateur pseudo-aléatoire basé sur un entier
+    mulberry32(a) {
+        let t = (a += 0x6d2b79f5);
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     }
     //INFOS PAR CODE:
-    getinfosparcode(idVoyage, voyages, voyageurs) {
-        const voyage = voyages.find((v) => v.id === idVoyage);
+    getinfosparcode(id, voyages, voyageurs) {
+        const voyage = voyages.find((v) => v.id === id);
+main
         if (!voyage)
             return "Voyage non trouvé";
         const voyageur = voyageurs.find((v) => v.id === voyage.voyageurId);
