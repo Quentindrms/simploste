@@ -1,5 +1,6 @@
 export class Voyage {
     constructor(id, date, heure, destination, classe, reduc, voyageurId) {
+main
         this.id = id;
         this.date = date;
         this.heure = heure;

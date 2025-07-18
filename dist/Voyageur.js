@@ -1,6 +1,8 @@
 import { Voyage } from "Voyage";
 export class Voyageur {
+
     constructor(nom, prenom, email, telephone, dateNaissance) {
+main
         this.id = Voyageur.compteur++;
         this.nom = nom;
         this.prenom = prenom;
@@ -30,13 +32,16 @@ export class Voyageur {
     }
     // Infos complètes voyageur
     getinfosvoyageur() {
+
         // LOCAL STORAGE LOCAL STORAGE localStorage.setItem("hello", "Hello, world !")
+main
         const date = this.dateNaissance
             ? this.dateNaissance.toLocaleDateString()
             : "Date inconnue";
         return `ID ${this.id} - ${this.getnomcomplet()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
     }
     ////////////////////////PARTIE INFOS CODE//////////////////
+
     // Générateur pseudo-aléatoire basé sur un entier
     mulberry32(a) {
         let t = (a += 0x6d2b79f5);
@@ -47,6 +52,7 @@ export class Voyageur {
     //INFOS PAR CODE:
     getinfosparcode(id, voyages, voyageurs) {
         const voyage = voyages.find((v) => v.id === id);
+main
         if (!voyage)
             return "Voyage non trouvé";
         const voyageur = voyageurs.find((v) => v.id === voyage.voyageurId);
