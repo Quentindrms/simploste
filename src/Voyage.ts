@@ -1,48 +1,48 @@
 export class Voyage {
-  id: number;
+  idVoyage: number;
   date: string;
   heure: string;
   destination: string;
   classe: string;
   reduc: boolean;
-  voyageurId: number;
+  idVoyageur: number;
 
   constructor(
-    id: number,
+    idVoyage: number,
     date: string,
     heure: string,
     destination: string,
     classe: string,
     reduc: boolean,
-    voyageurId: number
+    idVoyageur: number
   ) {
-    this.id = id;
+    this.idVoyage = idVoyage;
     this.date = date;
     this.heure = heure;
     this.destination = destination;
     this.classe = classe;
     this.reduc = reduc;
-    this.voyageurId = voyageurId;
+    this.idVoyageur = idVoyageur;
   }
 
   calculPrix(): number {
     let prixBase: number;
-    let classeindice: number = 1;
+    let classeIndice: number = 1;
     let reduction: number = 1;
-    let prixtotal: number; 
-    const pkm: number = 1;
+    let prixTotal: number; 
+    const prixKm: number = 1;
     const distance: number = 1;
-    let animaloption: number = 25
+    let animalOption: number = 25
     // Exemple de base de prix pour trajet longueur
-    prixBase = distance * pkm 
+    prixBase = distance * prixKm 
 
 
     // Exemple de base de prix selon la classe:
     
-      prixBase = prixBase * classeindice; // classe par défaut
+      prixBase = prixBase * classeIndice; // classe par défaut
     
-    prixtotal = prixBase * reduction + animaloption;
-    return prixtotal
+    prixTotal = prixBase * reduction + animalOption;
+    return prixTotal
 
     
   }
