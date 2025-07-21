@@ -1,7 +1,7 @@
 import { Type } from "../node_modules/typescript/lib/typescript";
 
 export interface Voyageur {
-  id: number;
+  idVoyageur: number;
   nom: string;
   prenom: string;
   dateNaissance?: Date;
@@ -10,7 +10,7 @@ export interface Voyageur {
 }
 
 export interface Voyage {
-   id: number;
+   idVoyage: number;
   date: string;
   heure: string;
   destination: string;
