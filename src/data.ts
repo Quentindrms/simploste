@@ -20,7 +20,7 @@ export const data: AppData = {
       pricePerKm: 0.1,
       perks: ["Siège standard"],
     },
-    {
+    { 
       label: "Affaires",
       value: "business",
       pricePerKm: 0.25,
@@ -29,7 +29,7 @@ export const data: AppData = {
     {
       label: "Première classe",
       value: "first",
-      pricePerKm: 0.5,
+      pricePerKm : 0.5,
       perks: ["Chauffeur", "Service à la place", "Champagne", "Siège premium"],
     },
   ],

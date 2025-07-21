@@ -65,13 +65,14 @@ export class Voyageur {
       this.email
     }, Téléphone : ${this.telephone}`;
   }
+generateurCodeVoyage(a: number): string {
+  let t = (a += 0x6d2b79f5);
+  t = Math.imul(t ^ (t >>> 15), t | 1);
+  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+  t = (t ^ (t >>> 14)) >>> 0;
+  return ('0000000000' + t.toString(36)).slice(-10); // 🔥 exactement 10 caractères
+}
 
-  generateurCodeVoyage(a: number): number {
-    let t = (a += 0x6d2b79f5);
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  }
 
   getInfosCodeVoyage(
     id: number,
@@ -81,12 +82,12 @@ export class Voyageur {
     const voyage = voyages.find((v) => v.idVoyage === id);
     if (!voyage) return "Voyage non trouvé";
 
-    const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.voyageurId);
+    const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.idVoyageur);
     if (!voyageur) return "Voyageur non trouvé";
 
     return `ID Voyage: ${voyage.idVoyage}
 Nom: ${voyageur.nom} ${voyageur.prenom}
-Date: ${voyage.date}
+Date: ${voyage.date} 
 Heure: ${voyage.heure}
 Destination: ${voyage.destination}
 Prix: ${voyage.calculPrix()} €`;
