@@ -1,22 +1,14 @@
 {
-  "name": "simploste",
+  "name": "simplost-2",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Quentindrms/simploste.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Quentindrms/simploste/issues"
-  },
-  "homepage": "https://github.com/Quentindrms/simploste#readme",
   "dependencies": {
     "typescript": "^5.8.3"
-  }
+  },
+  "description": ""
 }
