@@ -15,17 +15,24 @@
 </head>
 
 <body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>Formul'air</strong></li>
-        </ul>
-    </nav>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><strong><a href="./index.html" class="contrast">Formul'air</a></strong></li>
+            </ul>
 
+            <ul>
+                <li><a href="./booking.html" class="">Accéder à votre réservation</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
 
         <form class="container container-form" id="form">
-            <fieldset class="form-fieldset">
-                <legend><h3>Informations personnelles</h3></legend>
+            <fieldset class="form-fieldset container">
+                <legend>
+                    <h3>Informations voyageur</h3>
+                </legend>
 
                 <div class="form-control">
 
@@ -53,8 +60,10 @@
             </fieldset>
 
 
-            <fieldset class="form-fieldset coontainer">
-                <legend><h3>Informations de voyage</h3></legend>
+            <fieldset class="form-fieldset container">
+                <legend>
+                    <h3>Informations de voyage</h3>
+                </legend>
 
                 <div class="form-control">
                     <label for="villeArrivee">Ville d'arrivée :</label>
@@ -76,11 +85,12 @@
                         <label for="depart">Date et heure de départ:</label>
                         <input type="datetime-local" id="depart" name="depart" aria-label="">
                     </div>
+            </fieldset>
+            <input type="submit" class="container" id="btnSubmit" value="Réservez votre voyage">
 
-                    <input type="submit" class="container" id="btnSubmit"> 
-                </form>
+        </form>
 
-                <script src="./dist/main.js" type="module"></script>
+        <script src="./dist/main.js" type="module"></script>
     </main>
 
 </body>
