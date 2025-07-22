@@ -19,7 +19,7 @@
     </nav>
 
     <main>
-        <form class="container container-form" id="form">
+        <form class="container container-form" id="paiementform">
             <fieldset>
                 <legend><h3>Espace de paiement sécurisé</h3></legend>
 
@@ -51,7 +51,8 @@
                 <!-- date d'expiration-->
                 <div class="form_paiement">
                     <label for="cb_expiration">Date d'expiration</label>
-                    <input type="date" id="cb_expiration" name="cb_expiration" required>
+                    <input type="month" id="cb_expiration" name="cb_expiration" required>
+                    <small>Format attendu : MM/AAAA</small> <!-- Pour que le format dans firefox s'affiche de cette façon 'mm/aaaa' en saisie manuelle (pas possible d'avoir un calendrier car Firefox n'est pas compatible) -->
                 </div>
 
                 <!-- code de sécurité CCV -->
@@ -67,6 +68,6 @@
 
 
     </main>
-    
+    <script src="./dist/paiement.js" type="module"></script>
 </body>
 </html>
