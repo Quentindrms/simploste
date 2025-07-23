@@ -70,7 +70,7 @@ generateurCodeVoyage(a: number): string {
   t = Math.imul(t ^ (t >>> 15), t | 1);
   t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
   t = (t ^ (t >>> 14)) >>> 0;
-  return ('0000000000' + t.toString(36)).slice(-10); // 🔥 exactement 10 caractères
+  return ('0000000000' + t.toString(36)).slice(-10); // exactement 10 caractères
 }
 
 

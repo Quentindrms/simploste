@@ -1,4 +1,4 @@
-import { Type } from "../node_modules/typescript/lib/typescript";
+// Les Interfaces de grenouilles:
 
 export interface Voyageur {
   idVoyageur: number;
@@ -10,17 +10,30 @@ export interface Voyageur {
 }
 
 export interface Voyage {
-   idVoyage: number;
+  idVoyage: number;
   date: string;
   heure: string;
   destination: string;
   classe: string;
   reduc: boolean;
-  voyageurId: number;  // <- ajouté
+  voyageurId: number;
+}
+
+export interface Destination {
+  label: string;
+  value: string;
+  distanceFromParis: number;
+}
+
+export interface Standing {
+  label: string;
+  value: string;
+  pricePerKm: number;
+  perks: string[];
 }
 
 export interface AppData {
-    //data: AppData ;
-    destinations: object ;
-    standing: object ;
-} ; 
+  destinations: Destination[];
+  standing: Standing[];
+}
+

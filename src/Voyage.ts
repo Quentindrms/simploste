@@ -1,4 +1,4 @@
-import  "data";
+import { data } from './data';
 
 export class Voyage {
   idVoyage: number;
@@ -27,31 +27,38 @@ export class Voyage {
     this.idVoyageur = idVoyageur;
   }
 
-  calculPrix(): number {
-    
-    let prixBase: number;
-    let classeIndice: number = 1 ;
-    let reduction: number = 1;
-    let prixTotal: number; 
-    const priceKm: number[] = [0.1, 0.25, 0.5];
-    const distance: number = 1;
-    let animal: number = 0;
-    let animalOption: number = 25
-    //prix pour trajet longueur
-    prixBase = distance * priceKm[classeIndice] * classeIndice
 
-
-    //prix selon la classe:
-    
-      prixBase = prixBase * classeIndice; // classe vale a 1 par defaut;D
-    
-    prixTotal = distance * prixBase * reduction + animal * animalOption;
-    return prixTotal
-    
-  }
-
+  // Methode calcul de prix
   
+  calculPrix(): number {
+   const selectedDestination = data.destinations.find(
+  (d) => d.value.toLowerCase() === this.destination.toLowerCase()
+);
 
+    if (!selectedDestination) {
+      console.error("Destination inconnue !");
+      return 0;
+    }
+
+    const distance = selectedDestination.distanceFromParis;
+
+    const priceKm = [0.1, 0.25, 0.5];
+    let classeIndice = 1;
+    if (this.classe === "eco") classeIndice = 0;
+    else if (this.classe === "first") classeIndice = 2;
+
+    const reduction = this.reduc ? 0.8 : 1; // -20% si reduc
+    const animal = 0; // tu peux passer ça plus tard
+    const animalOption = 25;
+
+    const prixBase = distance * priceKm[classeIndice];
+    const prixTotal = prixBase * reduction + animal * animalOption;
+
+    return prixTotal;
+  }
 }
+
+
+
 
    
