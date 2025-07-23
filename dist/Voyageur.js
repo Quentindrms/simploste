@@ -42,7 +42,9 @@ export class Voyageur {
         const voyage = voyages.find((v) => v.idVoyage === id);
         if (!voyage)
             return "Voyage non trouvé";
+        chems_feature_1
         const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.idVoyageur);
+
         if (!voyageur)
             return "Voyageur non trouvé";
         return `ID Voyage: ${voyage.idVoyage}

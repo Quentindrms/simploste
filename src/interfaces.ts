@@ -10,7 +10,7 @@ export interface Voyageur {
 }
 
 export interface Voyage {
-   idVoyage: number;
+  idVoyage: number;
   date: string;
   heure: string;
   destination: string;

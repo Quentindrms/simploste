@@ -14,8 +14,15 @@ body{
     display: flex;
     flex-direction: column;
     align-self: center;
+
+    gap: 2rem;
 }
 
 .form-title{
     text-align: center;
+}
+
+.form-fieldset{
+    border: 2px solid #E8D600;
+    padding: 4rem;
 }
