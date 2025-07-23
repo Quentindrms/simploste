@@ -1,4 +1,4 @@
-import  "data";
+import  "./data.js";
 
 export class Voyage {
   idVoyage: number;

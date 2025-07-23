@@ -4,7 +4,7 @@ export interface Voyageur {
   idVoyageur: number;
   nom: string;
   prenom: string;
-  dateNaissance: Date;
+  dateNaissance: string;
   email: string;
   telephone: string;
 }

@@ -1,4 +1,4 @@
-import { Voyage } from "Voyage";
+import { Voyage } from "./Voyage.js";
 export class Voyageur {
     constructor(nom, prenom, email, telephone, dateNaissance) {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -26,9 +26,7 @@ export class Voyageur {
         return `${this.prenom} ${this.nom}`;
     }
     getInfosVoyageur() {
-        const date = this.dateNaissance
-            ? this.dateNaissance.toLocaleDateString()
-            : "Date inconnue";
+        const date = this.dateNaissance;
         return `ID ${this.idVoyageur} - ${this.getNomComplet()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
     }
     generateurCodeVoyage(a) {
