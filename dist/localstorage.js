@@ -1,8 +1,10 @@
-"use strict";
+
 // stocker qq chose ds localstorage :
-// STORAGE NAVIGATEUR :
-function stockInfosVoyageur(params) {
+// stocker qq chose dans localStorage avec un id unique :
+export function getInfosVoyageur(info, id) {
+    localStorage.setItem(`voyageur_${id}`, info);
 }
-// récupérer qqchose de localstorage :
-function recupererInfoVoyageur(params) {
+// récupérer une info de localStorage par id :
+export function setInfoVoyageur(id) {
+    return localStorage.getItem(`voyageur_${id}`);
 }
