@@ -1,3 +1,5 @@
+import  "data";
+
 export class Voyage {
   idVoyage: number;
   date: string;
@@ -26,31 +28,29 @@ export class Voyage {
   }
 
   calculPrix(): number {
+    
     let prixBase: number;
-    let classeIndice: number = 1;
+    let classeIndice: number = 1 ;
     let reduction: number = 1;
     let prixTotal: number; 
-    const prixKm: number = 1;
+    const priceKm: number[] = [0.1, 0.25, 0.5];
     const distance: number = 1;
+    let animal: number = 0;
     let animalOption: number = 25
-    // Exemple de base de prix pour trajet longueur
-    prixBase = distance * prixKm 
+    //prix pour trajet longueur
+    prixBase = distance * priceKm[classeIndice] * classeIndice
 
 
-    // Exemple de base de prix selon la classe:
+    //prix selon la classe:
     
-      prixBase = prixBase * classeIndice; // classe par défaut
+      prixBase = prixBase * classeIndice; // classe vale a 1 par defaut;D
     
-    prixTotal = prixBase * reduction + animalOption;
+    prixTotal = distance * prixBase * reduction + animal * animalOption;
     return prixTotal
-
     
   }
 
-   // FORMULE LOGIQUE DE CALCUL PRIX CF MIND MAP
-  //  calcul price ( nbre voy X (prixtajet) X reduc X coefclasse
-//si present) + options ( animal,...)   
-   // return 0;
+  
 
 }
 

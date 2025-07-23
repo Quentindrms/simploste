@@ -35,18 +35,21 @@ export class Voyageur {
         let t = (a += 0x6d2b79f5);
         t = Math.imul(t ^ (t >>> 15), t | 1);
         t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        t = (t ^ (t >>> 14)) >>> 0;
+        return ('0000000000' + t.toString(36)).slice(-10); // 🔥 exactement 10 caractères
     }
     getInfosCodeVoyage(id, voyages, voyageurs) {
         const voyage = voyages.find((v) => v.idVoyage === id);
         if (!voyage)
             return "Voyage non trouvé";
-        const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.voyageurId);
+        chems_feature_1
+        const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.idVoyageur);
+
         if (!voyageur)
             return "Voyageur non trouvé";
         return `ID Voyage: ${voyage.idVoyage}
 Nom: ${voyageur.nom} ${voyageur.prenom}
-Date: ${voyage.date}
+Date: ${voyage.date} 
 Heure: ${voyage.heure}
 Destination: ${voyage.destination}
 Prix: ${voyage.calculPrix()} €`;
