@@ -1,4 +1,3 @@
-
 // stocker qq chose ds localstorage :
 // stocker qq chose dans localStorage avec un id unique :
 export function getInfosVoyageur(info, id) {

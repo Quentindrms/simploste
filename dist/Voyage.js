@@ -14,7 +14,6 @@ export class Voyage {
         let classeIndice = 1;
         let reduction = 1;
         let prixTotal;
-        chems_feature_1
         const priceKm = [0.1, 0.25, 0.5];
         const distance = 1;
         let animal = 0;
