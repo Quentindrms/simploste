@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-
 <html data-theme="light" lang="fr">
-
-</html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,30 +18,30 @@
     </nav>
 
     <main>
-
         <form class="container container-form" id="form">
             <fieldset class="form-fieldset">
                 <legend><h3>Informations personnelles</h3></legend>
-
+                
                 <div class="form-control">
-
                     <label for="prenom">Prénom :</label>
                     <input type="text" id="prenom" name="prenom" required>
                 </div>
+
                 <div class="form-control">
                     <label for="nom">Nom :</label>
                     <input type="text" id="nom" name="nom" required>
-
                 </div>
+
                 <div class="form-control">
                     <label for="age">Date de naissance :</label>
-
                     <input type="date" id="age" name="age" required>
                 </div>
+
                 <div class="form-control">
                     <label for="email">Adresse e-mail :</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="form-control">
                     <label for="tel">Numéro de téléphone :</label>
                     <input type="tel" id="tel" name="tel" required>
@@ -53,7 +49,7 @@
             </fieldset>
 
 
-            <fieldset class="form-fieldset coontainer">
+            <fieldset class="form-fieldset container">
                 <legend><h3>Informations de voyage</h3></legend>
 
                 <div class="form-control">
@@ -71,18 +67,41 @@
                         <option value="brussels">Bruxelles</option>
                         <option value="copenhagen">Copenhague</option>
                     </select>
+                </div>
 
-                    <div class="form-control">
-                        <label for="depart">Date et heure de départ:</label>
-                        <input type="datetime-local" id="depart" name="depart" aria-label="">
-                    </div>
+                <div class="form-control">
+                    <label for="depart">Date et heure de départ :</label>
+                    <input type="datetime-local" id="depart" name="depart" aria-label="Date et heure de départ">
+                </div>
 
-                    <input type="submit" class="container" id="btnSubmit"> 
-                </form>
+                <div class="form-control">
+                    <label for="classe-voyage">Classe de voyage :</label>
+                    <select id="classe-voyage" name="classe-voyage" aria-label="classe-voyage" required>
+                        <option value="" selected disabled>--Veuillez choisir--</option>
+                        <option value="economy">Economie</option>
+                        <option value="business">Affaires</option>
+                        <option value="first">Première classe</option>
+                    </select>
+                </div>
 
-                <script src="./dist/main.js" type="module"></script>
+                <div class="form-control">
+                <p>Vous voyagez seul ?</p>
+                <label>
+                    <input type="radio" name="accompagnement" value="oui" />
+                    Oui
+                </label>
+                <label>
+                    <input type="radio" name="accompagnement" value="non" />
+                    Non
+                </label>
+                </div>
+
+            </fieldset>
+
+            <input type="submit" class="container" id="btnSubmit">           
+        </form>
+
+        <script src="./dist/main.js" type="module"></script>
     </main>
-
 </body>
-
 </html>
