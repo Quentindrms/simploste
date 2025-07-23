@@ -1,4 +1,4 @@
-// === Fonction d'échappement HTML ===
+// Fonction d'échappement HTML
 function escapeHTML(str: string): string {
   return str
     .replace(/&/g, "&amp;")
@@ -8,19 +8,19 @@ function escapeHTML(str: string): string {
     .replace(/'/g, "&#039;");
 }
 
-// === Gestion du submit du formulaire ===
+// Submit " sur le formulaire "
 const form = document.getElementById('form-title') as HTMLFormElement;
 
 if (form) {
   form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Empêche le rechargement de la page
+    event.preventDefault(); // Empêche le rechargement inutile de la page
     submitForm();
   });
 }
 
 function submitForm() {
   console.log('Formulaire soumis (submit)');
-  // Tu peux ici récupérer les valeurs du formulaire et les traiter
+  // console log controle
 }
 
 // BTN généré:
