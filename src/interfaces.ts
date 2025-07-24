@@ -7,6 +7,7 @@ export interface Voyageur {
   dateNaissance: string;
   email: string;
   telephone: string;
+  travelAlone: string;
 }
 
 export interface Voyage {

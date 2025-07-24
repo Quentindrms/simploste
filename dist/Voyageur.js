@@ -1,6 +1,6 @@
 import { Voyage } from "./Voyage.js";
 export class Voyageur {
-    constructor(nom, prenom, email, telephone, dateNaissance) {
+    constructor(nom, prenom, email, telephone, dateNaissance, travelAlone) {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             throw new Error("Email invalide");
         }
@@ -10,6 +10,7 @@ export class Voyageur {
         this.dateNaissance = dateNaissance;
         this.email = email;
         this.telephone = telephone;
+        this.travelAlone = travelAlone;
     }
     creerVoyage(idVoyage, date, heure, destination, classe, reduc) {
         return new Voyage(this.idVoyageur, date, heure, destination, classe, reduc, idVoyage);

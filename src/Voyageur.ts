@@ -9,6 +9,7 @@ export class Voyageur {
   private dateNaissance?: string;
   private email: string;
   private telephone: string;
+  private travelAlone: string;
 
   constructor(
     nom: string,
@@ -16,6 +17,7 @@ export class Voyageur {
     email: string,
     telephone: string,
     dateNaissance: string,
+    travelAlone: string,
   ) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw new Error("Email invalide");
@@ -27,6 +29,8 @@ export class Voyageur {
     this.dateNaissance = dateNaissance;
     this.email = email;
     this.telephone = telephone;
+    this.travelAlone = travelAlone;
+
   }
 
   creerVoyage(

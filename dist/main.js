@@ -17,12 +17,13 @@ function submitForm() {
         dateBirth: formData.get('age'),
         mail: formData.get('email'),
         phone: formData.get('tel'),
+        travelAlone: formData.get('accompagnement'),
     };
     /** Objet dataJourney - données liées au voyage du client */
     let dataJourney = {
         arrival: formData.get('villeArrivee'),
         dateTimeLocal: formData.get('depart')
     };
-    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth, dataUser.travelAlone);
     console.log(voyageur);
 }

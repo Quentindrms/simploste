@@ -26,6 +26,7 @@ let dataUser = {
     dateBirth: formData.get('age') as string,
     mail: formData.get('email') as string,
     phone: formData.get('tel') as string,
+    travelAlone: formData.get('accompagnement') as string,
 }
 
 /** Objet dataJourney - données liées au voyage du client */
@@ -34,7 +35,7 @@ let dataJourney = {
     dateTimeLocal: formData.get('depart')
 }
 
-    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth, dataUser.travelAlone);
     console.log(voyageur);
 }
 
