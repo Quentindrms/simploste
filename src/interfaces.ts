@@ -2,8 +2,8 @@ import { Type } from "../node_modules/typescript/lib/typescript";
 
 export interface Voyageur {
   idVoyageur: number;
-  nom: string;
-  prenom: string;
+  userForename: string;
+  userName: string;
   dateNaissance: string;
   email: string;
   telephone: string;
@@ -24,4 +24,4 @@ export interface AppData {
     //data: AppData ;
     destinations: object ;
     standing: object ;
-} ; 
+}

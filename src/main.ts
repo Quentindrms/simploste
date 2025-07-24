@@ -1,4 +1,5 @@
 import { Voyageur } from "./Voyageur.js";
+import { LocalStorage } from "./localstorage.js";
 
 const form = document.getElementById('form') as HTMLFormElement;
 const btnSubmit = document.getElementById('btnSubmit');
@@ -36,6 +37,9 @@ let dataJourney = {
 }
 
     let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth, dataUser.travelAlone);
+    let storage = new LocalStorage();
+    storage.setInfoVoyageur(voyageur);
     console.log(voyageur);
+    console.log(storage.getInfoVoyageur());
 }
 

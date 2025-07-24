@@ -1,4 +1,5 @@
 import { Voyageur } from "./Voyageur.js";
+import { LocalStorage } from "./localstorage.js";
 const form = document.getElementById('form');
 const btnSubmit = document.getElementById('btnSubmit');
 if (btnSubmit) {
@@ -25,5 +26,8 @@ function submitForm() {
         dateTimeLocal: formData.get('depart')
     };
     let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth, dataUser.travelAlone);
+    let storage = new LocalStorage();
+    storage.setInfoVoyageur(voyageur);
     console.log(voyageur);
+    console.log(storage.getInfoVoyageur());
 }

@@ -1,4 +1,5 @@
 import  "./data.js";
+import { data } from "./data.js";
 
 export class Voyage {
   idVoyage: number;
@@ -29,6 +30,8 @@ export class Voyage {
 
   calculPrix(): number {
     
+
+
     let prixBase: number;
     let classeIndice: number = 1 ;
     let reduction: number = 1;

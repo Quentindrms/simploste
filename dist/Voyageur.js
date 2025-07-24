@@ -1,14 +1,14 @@
 import { Voyage } from "./Voyage.js";
 export class Voyageur {
-    constructor(nom, prenom, email, telephone, dateNaissance, travelAlone) {
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    constructor(name, foreName, mail, telephone, dateNaissance, travelAlone) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
             throw new Error("Email invalide");
         }
         this.idVoyageur = Voyageur.compteur++;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.userForename = foreName;
+        this.userName = name;
         this.dateNaissance = dateNaissance;
-        this.email = email;
+        this.email = mail;
         this.telephone = telephone;
         this.travelAlone = travelAlone;
     }
@@ -23,12 +23,15 @@ export class Voyageur {
         const telRegex = /^(\+33|0)[1-9](\d{2}){4}$/;
         return telRegex.test(this.telephone);
     }
-    getNomComplet() {
-        return `${this.prenom} ${this.nom}`;
+    getUserName() {
+        return this.userName;
+    }
+    getUserForename() {
+        return this.userForename;
     }
     getInfosVoyageur() {
         const date = this.dateNaissance;
-        return `ID ${this.idVoyageur} - ${this.getNomComplet()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
+        return `ID ${this.idVoyageur} - ${this.getUserForename()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
     }
     generateurCodeVoyage(a) {
         let t = (a += 0x6d2b79f5);
@@ -45,7 +48,7 @@ export class Voyageur {
         if (!voyageur)
             return "Voyageur non trouvé";
         return `ID Voyage: ${voyage.idVoyage}
-Nom: ${voyageur.nom} ${voyageur.prenom}
+Nom: ${voyageur.getUserName} ${voyageur.getUserForename()}
 Date: ${voyage.date} 
 Heure: ${voyage.heure}
 Destination: ${voyage.destination}
