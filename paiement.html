@@ -25,8 +25,8 @@
 
                 <!-- nom propriétaire de la carte-->
                 <div class="form_paiement">
-                    <label for="cb_name">Nom du propriétaire de la carte bancaire</label>
-                    <input type="text" id="cb_name" name="cb_name" required>
+                    <label for="cb_name">Titulaire de la carte bancaire</label>
+                    <input type="text" id="cb_name" name="cb_name" required pattern="[A-Z\s]+" tittle="Nom et Prénom en majuscules uniquement">
 
                 </div>
 
@@ -51,14 +51,14 @@
                 <!-- date d'expiration-->
                 <div class="form_paiement">
                     <label for="cb_expiration">Date d'expiration</label>
-                    <input type="month" id="cb_expiration" name="cb_expiration" required>
-                    <small>Format attendu : MM/AAAA</small> <!-- Pour que le format dans firefox s'affiche de cette façon 'mm/aaaa' en saisie manuelle (pas possible d'avoir un calendrier car Firefox n'est pas compatible) -->
+                    <input type="month" id="cb_expiration" name="cb_expiration" required> <!---->
+                    <small>Format attendu : mois AAAA</small> <!-- Pour que le format dans firefox s'affiche de cette façon 'mm/aaaa' en saisie manuelle (pas possible d'avoir un calendrier car Firefox n'est pas compatible) -->
                 </div>
 
                 <!-- code de sécurité CCV -->
                 <div class="form_paiement">
                     <label for="cb_security">CCV</label>
-                    <input type="text" id="cb_security" name="cb_security" required>
+                    <input type="text" id="cb_security" name="cb_security" required pattern="[0-9]{3}" title="3 chiffres requis">
                 </div>
             </fieldset>
 
