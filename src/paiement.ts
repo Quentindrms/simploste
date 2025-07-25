@@ -59,6 +59,9 @@ if (typeof paiementDatas.cb_expiration !== "string" ){
     errors.push ("Vous devez renseigner le mois et l'année d'expiration de votre carte : MM/AAAA")
 }  // Attention : le text affiché ds le nav google n'est pas adapté au format firefox (trop ancien)=> quoi faire ?  => mettre une indication (ex: "ouvrez votre fomruaire dans google chrome" ?)
 
+//faire un selector : pour les dates => voir :
+// https://stackoverflow.com/questions/17017136/how-to-format-credit-card-input-fields-and-expiry-date
+
 //console.log(errors);
 
 
