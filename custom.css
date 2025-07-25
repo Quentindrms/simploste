@@ -1,14 +1,15 @@
-.label{
-    color: yellow;  /* ne s'affiche pas => garde couleur Pico par defaut */
+.label {
+    color: yellow;
+    /* ne s'affiche pas => garde couleur Pico par defaut */
 }
 
-body{
+body {
     justify-content: center;
     flex-direction: column;
     display: flex;
 }
 
-.container-form{
+.container-form {
     width: 45%;
 
     display: flex;
@@ -18,12 +19,31 @@ body{
     gap: 2rem;
 }
 
-.form-title{
+.form-title {
     text-align: center;
 }
 
-.form-fieldset{
+.form-fieldset {
     border: 2px solid #E8D600;
     padding: 4rem;
     border-radius: 1rem;
+}
+
+.booking-title{
+    text-align: center;
+}
+
+.booking-container {
+    max-width: fit-content;
+    border: 2px solid #E8D600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+
+
+}
+
+.booking{
+    padding: 2rem;
 }

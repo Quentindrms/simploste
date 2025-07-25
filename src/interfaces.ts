@@ -1,6 +1,6 @@
 // Plus d'import inutile, ajout des interfaces Destination et Standings:
 
-export interface Voyageur {
+export interface VoyageurData {
   idVoyageur: number;
   userForename: string;
   userName: string;
@@ -10,7 +10,7 @@ export interface Voyageur {
   travelAlone: string;
 }
 
-export interface Voyage {
+export interface VoyageData {
   idVoyage: number;
   date: string;
   heure: string;
