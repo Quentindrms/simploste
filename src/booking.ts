@@ -1,3 +1,4 @@
+
 import { getInfosVoyageur } from "./localstorage";
 
 const bookingForm = document.getElementById('booking-form') as HTMLFormElement;

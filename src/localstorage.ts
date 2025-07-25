@@ -1,13 +1,23 @@
-// stocker qq chose ds localstorage :
+import { Voyage } from "./Voyage.js";
+import { Voyageur } from "./Voyageur.js";
 
 
-// stocker qq chose dans localStorage avec un id unique :
-export function setInfosVoyageur(info: string, id: number): void {
-  localStorage.setItem(`voyageur_${id}`, info);
-}
+export class LocalStorage{
 
-// récupérer une info de localStorage par id :
-export function getInfoVoyageur(id: number): string | null {
-  return localStorage.getItem(`voyageur_${id}`);
+
+  setInfoVoyageur(objVoyageur: Voyageur){
+    localStorage.setItem('Voyager', JSON.stringify(objVoyageur));
+    console.log(`Voyageur : ${localStorage.getItem('Voyager')}`);
+  }
+
+    getInfoVoyageur(){
+    console.log(`Affichage des infos localStorage : ${localStorage.getItem('Voyager')}`);
+  }
+
+  setInfoVoyage(objVoyage: Voyage){
+    localStorage.setItem('Voyage', JSON.stringify(objVoyage));
+    console.log(`Stockage voyage : ${localStorage.getItem('Voyage')}`);
+  }
+
 }
 

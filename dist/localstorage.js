@@ -1,9 +1,13 @@
-// stocker qq chose ds localstorage :
-// stocker qq chose dans localStorage avec un id unique :
-export function getInfosVoyageur(info, id) {
-    localStorage.setItem(`voyageur_${id}`, info);
-}
-// récupérer une info de localStorage par id :
-export function setInfoVoyageur(id) {
-    return localStorage.getItem(`voyageur_${id}`);
+export class LocalStorage {
+    setInfoVoyageur(objVoyageur) {
+        localStorage.setItem('Voyager', JSON.stringify(objVoyageur));
+        console.log(`Voyageur : ${localStorage.getItem('Voyager')}`);
+    }
+    getInfoVoyageur() {
+        console.log(`Affichage des infos localStorage : ${localStorage.getItem('Voyager')}`);
+    }
+    setInfoVoyage(objVoyage) {
+        localStorage.setItem('Voyage', JSON.stringify(objVoyage));
+        console.log(`Stockage voyage : ${localStorage.getItem('Voyage')}`);
+    }
 }

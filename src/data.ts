@@ -1,6 +1,6 @@
 import type { AppData } from "./interfaces.js";
 
-export const data: AppData = {
+export const data = {
   destinations: [
     { label: "Paris", value: "paris", distanceFromParis: 0 },
     { label: "Londres", value: "london", distanceFromParis: 340 },

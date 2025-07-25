@@ -4,51 +4,30 @@ export class Voyageur {
   private static compteur = 0;
 
   public readonly idVoyageur: number;
-  private nom: string;
-  private prenom: string;
+  private userName: string;
+  private userForename: string;
   private dateNaissance?: string;
   private email: string;
   private telephone: string;
-  private travelAlone: string;
+  private idVoyage: number;
 
   constructor(
-    nom: string,
-    prenom: string,
-    email: string,
+    name: string,
+    foreName: string,
+    mail: string,
     telephone: string,
     dateNaissance: string,
-    travelAlone: string
   ) {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
       throw new Error("Email invalide");
     }
 
     this.idVoyageur = Voyageur.compteur++;
-    this.nom = nom;
-    this.prenom = prenom;
+    this.userForename = foreName;
+    this.userName = name;
     this.dateNaissance = dateNaissance;
-    this.email = email;
+    this.email = mail;
     this.telephone = telephone;
-    this.travelAlone = travelAlone;
-  }
-
-  creerVoyage(
-    idVoyage: number,
-    date: string,
-    heure: string,
-    destination: string,
-    classe: string,
-    reduc: boolean
-  ): Voyage {
-    return new Voyage(
-      this.idVoyageur,
-      date,
-      heure,
-      destination,
-      classe,
-      reduc,
-      idVoyage
-    );
   }
 
   verifValideMail(): boolean {
@@ -61,18 +40,23 @@ export class Voyageur {
     return telRegex.test(this.telephone);
   }
 
-  getNomComplet(): string {
-    return `${this.prenom} ${this.nom}`;
+  getUserName(): string{
+    return this.userName;
+  }
+
+  getUserForename(): string{
+    return this.userForename;
   }
 
   getInfosVoyageur(): string {
     const date = this.dateNaissance;
     return `ID ${
       this.idVoyageur
-    } - ${this.getNomComplet()}, né(e) le ${date}, Email : ${
+    } - ${this.getUserForename()}, né(e) le ${date}, Email : ${
       this.email
     }, Téléphone : ${this.telephone}`;
   }
+
   generateurCodeVoyage(): string {
     const travelCode = Array.from({ length: 10 }, () =>
       Math.floor(Math.random() * 10)
@@ -92,10 +76,10 @@ export class Voyageur {
     if (!voyageur) return "Voyageur non trouvé";
 
     return `ID Voyage: ${voyage.idVoyage}
-Nom: ${voyageur.nom} ${voyageur.prenom}
+Nom: ${voyageur.getUserName} ${voyageur.getUserForename()}
 Date: ${voyage.date} 
 Heure: ${voyage.heure}
 Destination: ${voyage.destination}
-Prix: ${voyage.calculPrix()} €`;
+Prix: ${voyage.calculPrix(0,0)} €`; /** A corriger */
   }
 }

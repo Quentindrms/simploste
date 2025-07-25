@@ -2,8 +2,8 @@
 
 export interface Voyageur {
   idVoyageur: number;
-  nom: string;
-  prenom: string;
+  userForename: string;
+  userName: string;
   dateNaissance: string;
   email: string;
   telephone: string;
@@ -22,9 +22,9 @@ export interface Voyage {
 
 export interface AppData {
     //data: AppData ;
-    destinations: Destination[] ;
-    standing: Standing[] ;
-} ; 
+    destinations: object ;
+    standing: object ;
+}
 
 
 // Ajout interfaces Destination et Standings pour utilisation dans fonction calcul prix dans voyage.ts
