@@ -31,6 +31,7 @@ export class Voyage {
   // METHODE DE CALCUL DU PRIX:
 
  calculPrix(distanceFromParis: number, pricePerKm: number): number {
+  
      const distance = (data.destinations[distanceFromParis].distanceFromParis);
      const prixAuKm = (data.standing[pricePerKm].pricePerKm);
      if (!data.destinations[distanceFromParis] || !data.standing[pricePerKm]) {
@@ -39,8 +40,6 @@ export class Voyage {
      const prixTotal = distance * prixAuKm
   return prixTotal
 }
-
-
 }
 
 
