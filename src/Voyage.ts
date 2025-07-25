@@ -27,7 +27,7 @@ calculPrix(): number {
   ) as HTMLSelectElement;
   const choixDeClasse = classeChoisie.value;
   for (let i = 0; i < data.standing.length; i++) {
-    if (choixDeClasse === data.standing[i].value) {
+    if (choixDeClasse === data.standing[i].label) {
       prixAuKm = data.standing[i].pricePerKm;
       break;
     }

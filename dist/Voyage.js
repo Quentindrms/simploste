@@ -1,5 +1,4 @@
 import { data } from "./data.js";
-
 export class Voyage {
     constructor(date, destination, classe) {
         this.date = date;
@@ -13,7 +12,7 @@ export class Voyage {
         const classeChoisie = document.getElementById("classe-voyage");
         const choixDeClasse = classeChoisie.value;
         for (let i = 0; i < data.standing.length; i++) {
-            if (choixDeClasse === data.standing[i].value) {
+            if (choixDeClasse === data.standing[i].label) {
                 prixAuKm = data.standing[i].pricePerKm;
                 break;
             }
