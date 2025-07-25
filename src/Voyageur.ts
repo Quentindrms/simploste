@@ -10,7 +10,6 @@ export class Voyageur {
   private email: string;
   private telephone: string;
 
-
   constructor(
     name: string,
     foreName: string,
@@ -28,18 +27,6 @@ export class Voyageur {
     this.dateNaissance = dateNaissance;
     this.email = mail;
     this.telephone = telephone;
-
-  }
-
-  creerVoyage(
-    idVoyage: number,
-    date: string,
-    heure: string,
-    destination: string,
-    classe: string,
-    reduc: boolean
-  ): Voyage {
-    return new Voyage(this.idVoyageur, date, heure, destination, classe, reduc, idVoyage);
   }
 
   verifValideMail(): boolean {
@@ -61,7 +48,7 @@ export class Voyageur {
   }
 
   getInfosVoyageur(): string {
-    const date = this.dateNaissance
+    const date = this.dateNaissance;
     return `ID ${
       this.idVoyageur
     } - ${this.getUserForename()}, né(e) le ${date}, Email : ${
@@ -69,30 +56,10 @@ export class Voyageur {
     }, Téléphone : ${this.telephone}`;
   }
 
-generateurCodeVoyage(a: number): string {
-  let t = (a += 0x6d2b79f5);
-  t = Math.imul(t ^ (t >>> 15), t | 1);
-  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-  t = (t ^ (t >>> 14)) >>> 0;
-  return ('0000000000' + t.toString(36)).slice(-10); // 🔥 exactement 10 caractères
-}
-
-  getInfosCodeVoyage(
-    id: number,
-    voyages: Voyage[],
-    voyageurs: Voyageur[]
-  ): string {
-    const voyage = voyages.find((v) => v.idVoyage === id);
-    if (!voyage) return "Voyage non trouvé";
-
-    const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.idVoyageur);
-    if (!voyageur) return "Voyageur non trouvé";
-
-    return `ID Voyage: ${voyage.idVoyage}
-Nom: ${voyageur.getUserName} ${voyageur.getUserForename()}
-Date: ${voyage.date} 
-Heure: ${voyage.heure}
-Destination: ${voyage.destination}
-Prix: ${voyage.calculPrix(0,0)} €`; /** A corriger */
+  generateurCodeVoyage(): string {
+    const travelCode = Array.from({ length: 10 }, () =>
+      Math.floor(Math.random() * 10)
+    ).join("");
+    return travelCode
   }
 }
