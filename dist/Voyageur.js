@@ -1,7 +1,6 @@
-import { Voyage } from "./Voyage.js";
 export class Voyageur {
-    constructor(nom, prenom, email, telephone, dateNaissance, travelAlone) {
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    constructor(name, foreName, mail, telephone, dateNaissance) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
             throw new Error("Email invalide");
         }
         this.idVoyageur = Voyageur.compteur++;
@@ -10,7 +9,6 @@ export class Voyageur {
         this.dateNaissance = dateNaissance;
         this.email = mail;
         this.telephone = telephone;
-        this.travelAlone = travelAlone;
     }
     verifValideMail() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -26,27 +24,13 @@ export class Voyageur {
     getUserForename() {
         return this.userForename;
     }
-
-    generateurCodeVoyage(a) {
-        let t = (a += 0x6d2b79f5);
-        t = Math.imul(t ^ (t >>> 15), t | 1);
-        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-        t = (t ^ (t >>> 14)) >>> 0;
-        return ('0000000000' + t.toString(36)).slice(-10); // 🔥 exactement 10 caractères
+    getInfosVoyageur() {
+        const date = this.dateNaissance;
+        return `ID ${this.idVoyageur} - ${this.getUserForename()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
     }
-    getInfosCodeVoyage(id, voyages, voyageurs) {
-        const voyage = voyages.find((v) => v.idVoyage === id);
-        if (!voyage)
-            return "Voyage non trouvé";
-        const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.idVoyageur);
-        if (!voyageur)
-            return "Voyageur non trouvé";
-        return `ID Voyage: ${voyage.idVoyage}
-Nom: ${voyageur.getUserName} ${voyageur.getUserForename()}
-Date: ${voyage.date} 
-Heure: ${voyage.heure}
-Destination: ${voyage.destination}
-Prix: ${voyage.calculPrix(0, 0)} €`; /** A corriger */
+    generateurCodeVoyage() {
+        const travelCode = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10)).join("");
+        return travelCode;
     }
 }
 Voyageur.compteur = 0;

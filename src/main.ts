@@ -29,6 +29,7 @@ let dataUser = {
     dateBirth: formData.get('age') as string,
     mail: formData.get('email') as string,
     phone: formData.get('tel') as string,
+    bookingNumber: '',
 }
 
 /** Objet dataJourney - données liées au voyage du client */
@@ -37,15 +38,11 @@ let dataJourney = {
     dateTimeLocal: formData.get('depart') as string,
     travelClass: formData.get('classe-voyage') as string,
 }
-
     const voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    dataUser.bookingNumber = voyageur.generateurCodeVoyage();
     const voyage = new Voyage(dataJourney.dateTimeLocal, dataJourney.arrival, dataJourney.travelClass);
     let storage = new LocalStorage();
-    storage.setInfoVoyageur(voyageur);
-    console.log(voyageur);
-    console.log(storage.getInfoVoyageur());
-    console.log(voyage);
-
-    storage.setInfoVoyage(voyage);
+    storage.setInfoVoyageur(voyageur, dataUser.bookingNumber);
+    storage.setInfoVoyage(voyage, dataUser.bookingNumber);
 }
 

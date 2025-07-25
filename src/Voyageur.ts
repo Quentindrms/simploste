@@ -9,7 +9,6 @@ export class Voyageur {
   private dateNaissance?: string;
   private email: string;
   private telephone: string;
-  private idVoyage: number;
 
   constructor(
     name: string,
@@ -62,24 +61,5 @@ export class Voyageur {
       Math.floor(Math.random() * 10)
     ).join("");
     return travelCode
-  }
-
-  getInfosCodeVoyage(
-    id: number,
-    voyages: Voyage[],
-    voyageurs: Voyageur[]
-  ): string {
-    const voyage = voyages.find((v) => v.idVoyage === id);
-    if (!voyage) return "Voyage non trouvé";
-
-    const voyageur = voyageurs.find((v) => v.idVoyageur === voyage.idVoyageur);
-    if (!voyageur) return "Voyageur non trouvé";
-
-    return `ID Voyage: ${voyage.idVoyage}
-Nom: ${voyageur.getUserName} ${voyageur.getUserForename()}
-Date: ${voyage.date} 
-Heure: ${voyage.heure}
-Destination: ${voyage.destination}
-Prix: ${voyage.calculPrix(0,0)} €`; /** A corriger */
   }
 }

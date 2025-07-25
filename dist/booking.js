@@ -1,4 +1,3 @@
-"use strict";
 const bookingForm = document.getElementById('booking-form');
 const btnBookingSubmit = document.getElementById('booking-form');
 if (btnBookingSubmit) {
@@ -17,4 +16,3 @@ function getBookingData() {
     console.log(dataBooking);
 }
 export {};
-

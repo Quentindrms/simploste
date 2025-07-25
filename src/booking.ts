@@ -1,5 +1,5 @@
 
-import { getInfosVoyageur } from "./localstorage";
+import { LocalStorage } from "./localstorage";
 
 const bookingForm = document.getElementById('booking-form') as HTMLFormElement;
 const btnBookingSubmit = document.getElementById('booking-form');

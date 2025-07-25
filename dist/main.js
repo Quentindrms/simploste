@@ -19,6 +19,7 @@ function submitForm() {
         dateBirth: formData.get('age'),
         mail: formData.get('email'),
         phone: formData.get('tel'),
+        bookingNumber: '',
     };
     /** Objet dataJourney - données liées au voyage du client */
     let dataJourney = {
@@ -27,11 +28,9 @@ function submitForm() {
         travelClass: formData.get('classe-voyage'),
     };
     const voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    dataUser.bookingNumber = voyageur.generateurCodeVoyage();
     const voyage = new Voyage(dataJourney.dateTimeLocal, dataJourney.arrival, dataJourney.travelClass);
     let storage = new LocalStorage();
-    storage.setInfoVoyageur(voyageur);
-    console.log(voyageur);
-    console.log(storage.getInfoVoyageur());
-    console.log(voyage);
-    storage.setInfoVoyage(voyage);
+    storage.setInfoVoyageur(voyageur, dataUser.bookingNumber);
+    storage.setInfoVoyage(voyage, dataUser.bookingNumber);
 }
