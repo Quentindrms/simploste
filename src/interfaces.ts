@@ -2,8 +2,8 @@
 
 export interface Voyageur {
   idVoyageur: number;
-  nom: string;
-  prenom: string;
+  userForename: string;
+  userName: string;
   dateNaissance: string;
   email: string;
   telephone: string;
@@ -22,6 +22,10 @@ export interface Voyage {
 
 export interface AppData {
     //data: AppData ;
+    destinations: object ;
+    standing: object ;
+}
+
     destinations: Destination[] ;
     standing: Standing[] ;
 } ; 

@@ -1,4 +1,6 @@
 import { Voyageur } from "./Voyageur.js";
+import { Voyage } from "./Voyage.js";
+import { LocalStorage } from "./localstorage.js";
 
 const form = document.getElementById('form') as HTMLFormElement;
 const btnSubmit = document.getElementById('btnSubmit');
@@ -26,7 +28,6 @@ let dataUser = {
     dateBirth: formData.get('age') as string,
     mail: formData.get('email') as string,
     phone: formData.get('tel') as string,
-    travelAlone: formData.get('accompagnement') as string,
 }
 
 /** Objet dataJourney - données liées au voyage du client */
@@ -35,7 +36,10 @@ let dataJourney = {
     dateTimeLocal: formData.get('depart')
 }
 
-    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth, dataUser.travelAlone);
+    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    let storage = new LocalStorage();
+    storage.setInfoVoyageur(voyageur);
     console.log(voyageur);
+    console.log(storage.getInfoVoyageur());
 }
 
