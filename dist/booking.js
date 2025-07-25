@@ -1,8 +1,10 @@
 const bookingForm = document.getElementById('booking-form');
-const btnBookingSubmit = document.getElementById('booking-form');
-if (btnBookingSubmit) {
-    btnBookingSubmit.addEventListener('submit', (e) => {
-        e.preventDefault();
+let userData = '';
+let bookingData = '';
+console.log(bookingForm);
+if (bookingForm) {
+    bookingForm.addEventListener('submit', (event) => {
+        event.preventDefault();
         getBookingData();
     });
 }
@@ -13,6 +15,9 @@ function getBookingData() {
         bookingNumber: bookingSubmitData.get('number'),
     };
     console.log('click');
-    console.log(dataBooking);
+    console.log(`TRVL-${dataBooking.bookingNumber}`);
+    console.log(localStorage.getItem(dataBooking.bookingNumber));
+    userData = localStorage.getItem(dataBooking.bookingNumber);
+    bookingData = localStorage.getItem(`TRVL-${dataBooking.bookingNumber}`);
 }
 export {};
