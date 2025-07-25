@@ -2,6 +2,7 @@ import { Voyageur } from "./Voyageur.js";
 import { Voyage } from "./Voyage.js";
 import { LocalStorage } from "./localstorage.js";
 
+
 const form = document.getElementById('form') as HTMLFormElement;
 const btnSubmit = document.getElementById('btnSubmit');
 

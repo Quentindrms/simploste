@@ -1,6 +1,7 @@
+import { Voyage } from "./Voyage.js";
 export class Voyageur {
-    constructor(name, foreName, mail, telephone, dateNaissance) {
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+    constructor(nom, prenom, email, telephone, dateNaissance, travelAlone) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             throw new Error("Email invalide");
         }
         this.idVoyageur = Voyageur.compteur++;
@@ -9,6 +10,7 @@ export class Voyageur {
         this.dateNaissance = dateNaissance;
         this.email = mail;
         this.telephone = telephone;
+        this.travelAlone = travelAlone;
     }
     verifValideMail() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,10 +26,7 @@ export class Voyageur {
     getUserForename() {
         return this.userForename;
     }
-    getInfosVoyageur() {
-        const date = this.dateNaissance;
-        return `ID ${this.idVoyageur} - ${this.getUserForename()}, né(e) le ${date}, Email : ${this.email}, Téléphone : ${this.telephone}`;
-    }
+
     generateurCodeVoyage(a) {
         let t = (a += 0x6d2b79f5);
         t = Math.imul(t ^ (t >>> 15), t | 1);

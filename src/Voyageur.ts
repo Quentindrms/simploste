@@ -11,7 +11,6 @@ export class Voyageur {
   private telephone: string;
   private idVoyage: number;
 
-
   constructor(
     name: string,
     foreName: string,
@@ -29,7 +28,6 @@ export class Voyageur {
     this.dateNaissance = dateNaissance;
     this.email = mail;
     this.telephone = telephone;
-
   }
 
   verifValideMail(): boolean {
@@ -51,7 +49,7 @@ export class Voyageur {
   }
 
   getInfosVoyageur(): string {
-    const date = this.dateNaissance
+    const date = this.dateNaissance;
     return `ID ${
       this.idVoyageur
     } - ${this.getUserForename()}, né(e) le ${date}, Email : ${
@@ -59,13 +57,12 @@ export class Voyageur {
     }, Téléphone : ${this.telephone}`;
   }
 
-generateurCodeVoyage(a: number): string {
-  let t = (a += 0x6d2b79f5);
-  t = Math.imul(t ^ (t >>> 15), t | 1);
-  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-  t = (t ^ (t >>> 14)) >>> 0;
-  return ('0000000000' + t.toString(36)).slice(-10); // 🔥 exactement 10 caractères
-}
+  generateurCodeVoyage(): string {
+    const travelCode = Array.from({ length: 10 }, () =>
+      Math.floor(Math.random() * 10)
+    ).join("");
+    return travelCode
+  }
 
   getInfosCodeVoyage(
     id: number,

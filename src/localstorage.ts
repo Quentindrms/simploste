@@ -2,7 +2,6 @@ import { Voyage } from "./Voyage.js";
 import { Voyageur } from "./Voyageur.js";
 
 
-
 export class LocalStorage{
 
 
