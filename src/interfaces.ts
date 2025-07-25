@@ -26,10 +26,6 @@ export interface AppData {
     standing: object ;
 }
 
-    destinations: Destination[] ;
-    standing: Standing[] ;
-} ; 
-
 
 // Ajout interfaces Destination et Standings pour utilisation dans fonction calcul prix dans voyage.ts
 export interface Destination {

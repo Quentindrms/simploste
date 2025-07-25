@@ -1,3 +1,4 @@
+import "./data.js";
 import { data } from "./data.js";
 export class Voyage {
     constructor(idVoyage, date, heure, destination, classe, reduc, idVoyageur) {

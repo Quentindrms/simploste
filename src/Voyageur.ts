@@ -93,6 +93,6 @@ Nom: ${voyageur.getUserName} ${voyageur.getUserForename()}
 Date: ${voyage.date} 
 Heure: ${voyage.heure}
 Destination: ${voyage.destination}
-Prix: ${voyage.calculPrix()} €`;
+Prix: ${voyage.calculPrix(0,0)} €`; /** A corriger */
   }
 }
