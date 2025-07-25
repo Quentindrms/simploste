@@ -16,5 +16,3 @@ function getBookingData() {
     console.log('click');
     console.log(dataBooking);
 }
-export {};
-
