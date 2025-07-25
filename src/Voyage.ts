@@ -1,4 +1,6 @@
+
 import { data } from "./data.js";
+
 
 export class Voyage {
   idVoyage: number;

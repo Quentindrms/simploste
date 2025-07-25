@@ -9,13 +9,21 @@ body{
 }
 
 .container-form{
-    width: 35%;
+    width: 45%;
 
     display: flex;
     flex-direction: column;
     align-self: center;
+
+    gap: 2rem;
 }
 
 .form-title{
     text-align: center;
+}
+
+.form-fieldset{
+    border: 2px solid #E8D600;
+    padding: 4rem;
+    border-radius: 1rem;
 }
