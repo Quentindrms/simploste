@@ -9,6 +9,7 @@ export class Voyageur {
   private dateNaissance?: string;
   private email: string;
   private telephone: string;
+  private idVoyage: number;
 
 
   constructor(
@@ -29,17 +30,6 @@ export class Voyageur {
     this.email = mail;
     this.telephone = telephone;
 
-  }
-
-  creerVoyage(
-    idVoyage: number,
-    date: string,
-    heure: string,
-    destination: string,
-    classe: string,
-    reduc: boolean
-  ): Voyage {
-    return new Voyage(this.idVoyageur, date, heure, destination, classe, reduc, idVoyage);
   }
 
   verifValideMail(): boolean {

@@ -1,3 +1,4 @@
+import { Voyage } from "./Voyage.js";
 import { Voyageur } from "./Voyageur.js";
 
 
@@ -12,6 +13,11 @@ export class LocalStorage{
 
     getInfoVoyageur(){
     console.log(`Affichage des infos localStorage : ${localStorage.getItem('Voyager')}`);
+  }
+
+  setInfoVoyage(objVoyage: Voyage){
+    localStorage.setItem('Voyage', JSON.stringify(objVoyage));
+    console.log(`Stockage voyage : ${localStorage.getItem('Voyage')}`);
   }
 
 }

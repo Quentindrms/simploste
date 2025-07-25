@@ -32,14 +32,19 @@ let dataUser = {
 
 /** Objet dataJourney - données liées au voyage du client */
 let dataJourney = {
-    arrival: formData.get('villeArrivee'),
-    dateTimeLocal: formData.get('depart')
+    arrival: formData.get('villeArrivee') as string,
+    dateTimeLocal: formData.get('depart') as string,
+    travelClass: formData.get('classe-voyage') as string,
 }
 
-    let voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    const voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
+    const voyage = new Voyage(dataJourney.dateTimeLocal, dataJourney.arrival, dataJourney.travelClass);
     let storage = new LocalStorage();
     storage.setInfoVoyageur(voyageur);
     console.log(voyageur);
     console.log(storage.getInfoVoyageur());
+    console.log(voyage);
+
+    storage.setInfoVoyage(voyage);
 }
 

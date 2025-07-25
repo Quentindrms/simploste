@@ -6,4 +6,8 @@ export class LocalStorage {
     getInfoVoyageur() {
         console.log(`Affichage des infos localStorage : ${localStorage.getItem('Voyager')}`);
     }
+    setInfoVoyage(objVoyage) {
+        localStorage.setItem('Voyage', JSON.stringify(objVoyage));
+        console.log(`Stockage voyage : ${localStorage.getItem('Voyage')}`);
+    }
 }
