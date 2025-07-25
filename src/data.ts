@@ -1,4 +1,4 @@
-import type { AppData } from "./interfaces";
+import type { AppData } from "./interfaces.js";
 
 export const data: AppData = {
   destinations: [

@@ -1,5 +1,4 @@
-
-import { Voyage } from "Voyage";
+import { Voyage } from "./Voyage.js";
 
 export class Voyageur {
   private static compteur = 0;
@@ -7,16 +6,18 @@ export class Voyageur {
   public readonly idVoyageur: number;
   private nom: string;
   private prenom: string;
-  private dateNaissance?: Date;
+  private dateNaissance?: string;
   private email: string;
   private telephone: string;
+  private travelAlone: string;
 
   constructor(
     nom: string,
     prenom: string,
     email: string,
     telephone: string,
-    dateNaissance?: Date,
+    dateNaissance: string,
+    travelAlone: string,
   ) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw new Error("Email invalide");
@@ -28,6 +29,8 @@ export class Voyageur {
     this.dateNaissance = dateNaissance;
     this.email = email;
     this.telephone = telephone;
+    this.travelAlone = travelAlone;
+
   }
 
   creerVoyage(
@@ -57,8 +60,6 @@ export class Voyageur {
 
   getInfosVoyageur(): string {
     const date = this.dateNaissance
-      ? this.dateNaissance.toLocaleDateString()
-      : "Date inconnue";
     return `ID ${
       this.idVoyageur
     } - ${this.getNomComplet()}, né(e) le ${date}, Email : ${
