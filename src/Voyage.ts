@@ -1,5 +1,3 @@
-import  "./data.js";
-
 import { data } from "./data.js";
 
 

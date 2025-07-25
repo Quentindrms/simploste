@@ -45,4 +45,3 @@ let dataJourney = {
     storage.setInfoVoyageur(voyageur, dataUser.bookingNumber);
     storage.setInfoVoyage(voyage, dataUser.bookingNumber);
 }
-

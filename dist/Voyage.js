@@ -1,4 +1,3 @@
-import "./data.js";
 export class Voyage {
     constructor(date, destination, classe) {
         this.date = date;
