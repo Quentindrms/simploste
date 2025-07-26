@@ -1,19 +1,76 @@
 import { Voyageur } from "./Voyageur.js";
 import { Voyage } from "./Voyage.js";
 import { LocalStorage } from "./localstorage.js";
+let dataUser = {
+    nom: '',
+    prenom: '',
+    dateBirth: '',
+    mail: '',
+    phone: '',
+    bookingNumber: '',
+};
+let dataJourney = {
+    arrival: '',
+    dateTimeLocal: '',
+    travelClass: '',
+};
 const form = document.getElementById('form');
-const btnSubmit = document.getElementById('btnSubmit');
+//const btnSubmit = document.getElementById('btnSubmit');
+const formData = new FormData(form);
+const btnSubmit = document.createElement('input');
+btnSubmit.type = "submit";
+btnSubmit.className = "container-form";
+btnSubmit.id = 'btnSubmit';
+btnSubmit.value = 'Confirmer la commande';
 if (btnSubmit) {
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        submitForm();
-    });
+    btnSubmit.hidden = true;
 }
+const validateButton = document.getElementById('validate-button');
+validateButton === null || validateButton === void 0 ? void 0 : validateButton.addEventListener('click', (e) => { createRecapContainer(); });
+const recapContainer = document.createElement('div');
+recapContainer.className = "form-fieldset container";
+/**if (btnSubmit) {
+    form.addEventListener('submit', (event: Event) => {
+        event.preventDefault();
+        submitForm()
+    });
+} */
 console.log("hello world");
-function submitForm() {
-    const formData = new FormData(form);
+function submitForm(objVoyageur, objVoyage) {
+    let voyageur = objVoyageur;
+    let voyage = objVoyage;
+    let storage = new LocalStorage();
+    /** storage.setInfoVoyageur(voyageur, dataUser.bookingNumber);
+    storage.setInfoVoyage(voyage, dataUser.bookingNumber); **/
+    sessionStorage.setItem(dataUser.bookingNumber, JSON.stringify(voyageur));
+    sessionStorage.setItem(`PDNG-${dataUser.bookingNumber}`, JSON.stringify(voyage));
+}
+function createRecapContainer() {
+    const price = document.createElement('p');
+    const departure = document.createElement('p');
+    const classe = document.createElement('p');
+    const classePerks = document.createElement('p');
+    form.appendChild(recapContainer);
+    recapContainer.appendChild(price);
+    recapContainer.appendChild(departure);
+    recapContainer.appendChild(classe);
+    recapContainer.appendChild(classePerks);
+    price.innerText = "Le prix";
+    departure.innerText = "Le départ";
+    classe.innerText = "La classe";
+    classePerks.innerText = "Avantage de la classe";
+    writeRecapContainer();
+}
+function writeRecapContainer() {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitForm(voyageur, voyage);
+    });
+    if (btnSubmit) {
+        btnSubmit.hidden = false;
+    }
     /** Objet dataUser - données liées au client  */
-    let dataUser = {
+    dataUser = {
         nom: formData.get('nom'),
         prenom: formData.get('prenom'),
         dateBirth: formData.get('age'),
@@ -22,15 +79,18 @@ function submitForm() {
         bookingNumber: '',
     };
     /** Objet dataJourney - données liées au voyage du client */
-    let dataJourney = {
+    dataJourney = {
         arrival: formData.get('villeArrivee'),
         dateTimeLocal: formData.get('depart'),
         travelClass: formData.get('classe-voyage'),
     };
+    /** Actions liées à la validation du formulaire  */
     const voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
     dataUser.bookingNumber = voyageur.generateurCodeVoyage();
+    console.log(`Code voyage ${dataUser.bookingNumber}`);
     const voyage = new Voyage(dataJourney.dateTimeLocal, dataJourney.arrival, dataJourney.travelClass);
-    let storage = new LocalStorage();
-    storage.setInfoVoyageur(voyageur, dataUser.bookingNumber);
-    storage.setInfoVoyage(voyage, dataUser.bookingNumber);
+    voyage.getDestinationInfo();
+    voyage.getStandingInfo();
+    form.appendChild(btnSubmit);
 }
+/** Lorsque l'utilisateur */
