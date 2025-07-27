@@ -1,10 +1,26 @@
+/** Récupère les données de la commande */
+
+import { FlighData, VoyageData } from "./interfaces";
+import { Voyage } from "./Voyage";
+
+const urlParam = new URLSearchParams(window.location.search);
+const orderTicket = urlParam.get('id');
+console.log(orderTicket);
+const orderSpcec = sessionStorage.getItem(`PDNG-${orderTicket}`);
+const priceText = document.getElementById('pendingAmount');
+if (orderSpcec && priceText) {
+    const orderOBJ = JSON.parse(orderSpcec) as FlighData;
+    console.log(orderOBJ);
+    priceText.innerText = `Reste à régler : ${orderOBJ.totalPrice} euros`;
+}
+
 const paiementForm = document.getElementById("paiementForm") as HTMLFormElement;
 
 if (paiementForm) {
-    paiementForm.addEventListener ("submit", (event) => {
+    paiementForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const ExtractDatas = new FormData (paiementForm);
+        const ExtractDatas = new FormData(paiementForm);
 
         const paiementDatas = {
             cbName: ExtractDatas.get("cbName"),
@@ -19,12 +35,12 @@ if (paiementForm) {
 
 
         //____errors____________________
-        const errors: string[]= []
+        const errors: string[] = []
 
         //ok____errors_cb_name_______________ts+html
         if (typeof paiementDatas.cbName == "string") {
             const nameCb = paiementDatas.cbName.trim() //méthode .trim() pour qu'il n'y ait pas d'espace avant/apres le texte saisi.
-            if (nameCb.length <3) {
+            if (nameCb.length < 3) {
                 errors.push("le nom sur la carte doit contenir au moins 3 caratères.");
             }
 
@@ -37,7 +53,7 @@ if (paiementForm) {
         //ok____errors_type carte_______________
         if (!paiementDatas.cbTypes) {
             errors.push("Vous devez sélectionner un type de paiement");
-            
+
         }
         //console.log(errors);
 
@@ -50,7 +66,7 @@ if (paiementForm) {
         //?____errors_cb_expiration_______________ts+html
         if (paiementDatas.cbExpirationMM === null || paiementDatas.cbExpirationYY === null) {
             errors.push("Erreur MM+YY")
-            
+
         }
 
 
@@ -85,17 +101,17 @@ if (paiementForm) {
 
         }
 
-    //______affichage des erreurs ______tableau errors________
+        //______affichage des erreurs ______tableau errors________
 
 
 
-  
+
         //_________alerte_____
         console.log("paiement soumis : ", paiementDatas);
         alert("paiement soumis avec succès");
 
     })
-    
+
 }
 
 // RECAP RESA / PAIEMENT (au moins 3 derniers chiffres)

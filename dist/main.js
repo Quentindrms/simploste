@@ -1,6 +1,5 @@
 import { Voyageur } from "./Voyageur.js";
 import { Voyage } from "./Voyage.js";
-import { LocalStorage } from "./localstorage.js";
 let dataUser = {
     nom: '',
     prenom: '',
@@ -13,6 +12,7 @@ let dataJourney = {
     arrival: '',
     dateTimeLocal: '',
     travelClass: '',
+    totalPrice: '',
 };
 const form = document.getElementById('form');
 //const btnSubmit = document.getElementById('btnSubmit');
@@ -22,6 +22,10 @@ btnSubmit.type = "submit";
 btnSubmit.className = "container-form";
 btnSubmit.id = 'btnSubmit';
 btnSubmit.value = 'Confirmer la commande';
+const price = document.createElement('p');
+const departure = document.createElement('p');
+const classe = document.createElement('p');
+const classePerks = document.createElement('p');
 if (btnSubmit) {
     btnSubmit.hidden = true;
 }
@@ -39,17 +43,13 @@ console.log("hello world");
 function submitForm(objVoyageur, objVoyage) {
     let voyageur = objVoyageur;
     let voyage = objVoyage;
-    let storage = new LocalStorage();
-    /** storage.setInfoVoyageur(voyageur, dataUser.bookingNumber);
-    storage.setInfoVoyage(voyage, dataUser.bookingNumber); **/
     sessionStorage.setItem(dataUser.bookingNumber, JSON.stringify(voyageur));
     sessionStorage.setItem(`PDNG-${dataUser.bookingNumber}`, JSON.stringify(voyage));
+    sessionStorage.setItem(`ORDR-${dataUser.bookingNumber}`, JSON.stringify(dataJourney));
+    /** Accède à paiement.html en spécifiant l'ID de la commande demandée */
+    window.location.href = `paiement.html?id=${dataUser.bookingNumber}`;
 }
 function createRecapContainer() {
-    const price = document.createElement('p');
-    const departure = document.createElement('p');
-    const classe = document.createElement('p');
-    const classePerks = document.createElement('p');
     form.appendChild(recapContainer);
     recapContainer.appendChild(price);
     recapContainer.appendChild(departure);
@@ -83,6 +83,7 @@ function writeRecapContainer() {
         arrival: formData.get('villeArrivee'),
         dateTimeLocal: formData.get('depart'),
         travelClass: formData.get('classe-voyage'),
+        totalPrice: '',
     };
     /** Actions liées à la validation du formulaire  */
     const voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
@@ -91,6 +92,12 @@ function writeRecapContainer() {
     const voyage = new Voyage(dataJourney.dateTimeLocal, dataJourney.arrival, dataJourney.travelClass);
     voyage.getDestinationInfo();
     voyage.getStandingInfo();
+    voyage.calculatePrice();
+    dataJourney.totalPrice = voyage.totalPrice.toString();
+    price.innerText = `Coût total du voyage : ${voyage.totalPrice}`;
+    departure.innerText = `Ville d'arrivée : ${voyage.destination}`;
+    classe.innerText = `Vous voyagez en classe ${voyage.standing}`;
+    classePerks.innerText = `En voyagant en ${voyage.standing} vous bénéficiez de : ${voyage.standingPerks}`;
     form.appendChild(btnSubmit);
 }
 /** Lorsque l'utilisateur */

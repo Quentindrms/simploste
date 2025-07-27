@@ -14,8 +14,6 @@ export class Voyage {
   data: AppData;
   destinationDataLabel: string;
 
-  /** */
-
   constructor(
     date: string,
     destination: string,
@@ -32,10 +30,6 @@ export class Voyage {
 
     this.data = data;
     this.destinationDataLabel = '';
-  }
-
-  calculPrice() {
-
   }
 
   getDestinationInfo() {
@@ -62,39 +56,8 @@ export class Voyage {
     console.log(`Prix/km : ${this.pricePerkm} | Spécifications : ${this.standingPerks}`);
   }
 
-  /**
-  // METHODE DE CALCUL DU PRIX:
-
-calculPrix(): number {
-  let prixAuKm: number = 0;
-  let trajet: number = 0;
-
-  const classeChoisie = document.getElementById(
-    "classe-voyage"
-  ) as HTMLSelectElement;
-  const choixDeClasse = classeChoisie.value;
-  for (let i = 0; i < data.standing.length; i++) {
-    if (choixDeClasse === data.standing[i].label) {
-      prixAuKm = data.standing[i].pricePerKm;
-      break;
-    }
+  calculatePrice(){
+    this.totalPrice = this.pricePerkm * this.distanceFromParis
+    console.log(`Prix total : ${this.totalPrice}`)
   }
-
-  const villeChoisie = document.getElementById(
-    "villeArrivee"
-  ) as HTMLSelectElement;
-  let arrivee = villeChoisie.value;
-  for (let i = 0; i < data.destinations.length; i++) {
-    if (arrivee === data.destinations[i].value) {
-      trajet = data.destinations[i].distanceFromParis;
-      break;
-    }
-  }
-
-  if (trajet === 0 || prixAuKm === 0) {
-    throw new Error("trajet ou prixAuKm non défini");
-  }
-
-  const prixTotal = trajet * prixAuKm;
-  return prixTotal;  */
 }

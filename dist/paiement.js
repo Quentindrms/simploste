@@ -1,4 +1,14 @@
-"use strict";
+/** Récupère les données de la commande */
+const urlParam = new URLSearchParams(window.location.search);
+const orderTicket = urlParam.get('id');
+console.log(orderTicket);
+const orderSpcec = sessionStorage.getItem(`PDNG-${orderTicket}`);
+const priceText = document.getElementById('pendingAmount');
+if (orderSpcec && priceText) {
+    const orderOBJ = JSON.parse(orderSpcec);
+    console.log(orderOBJ);
+    priceText.innerText = `Reste à régler : ${orderOBJ.totalPrice} euros`;
+}
 const paiementForm = document.getElementById("paiementForm");
 if (paiementForm) {
     paiementForm.addEventListener("submit", (event) => {
@@ -68,5 +78,6 @@ if (paiementForm) {
         alert("paiement soumis avec succès");
     });
 }
+export {};
 // RECAP RESA / PAIEMENT (au moins 3 derniers chiffres)
 // BOUTON REMISE A ZERO DU FORMUALIRE / HTML EN 1 ELEMENT RESET

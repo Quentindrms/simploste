@@ -1,6 +1,5 @@
 import { data } from "./data.js";
 export class Voyage {
-    /** */
     constructor(date, destination, classe) {
         this.date = date;
         this.destination = destination;
@@ -11,8 +10,6 @@ export class Voyage {
         this.distanceFromParis = 0;
         this.data = data;
         this.destinationDataLabel = '';
-    }
-    calculPrice() {
     }
     getDestinationInfo() {
         console.log("Destination info");
@@ -35,5 +32,9 @@ export class Voyage {
             }
         }
         console.log(`Prix/km : ${this.pricePerkm} | Spécifications : ${this.standingPerks}`);
+    }
+    calculatePrice() {
+        this.totalPrice = this.pricePerkm * this.distanceFromParis;
+        console.log(`Prix total : ${this.totalPrice}`);
     }
 }
