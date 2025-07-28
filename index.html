@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html data-theme="light" lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +24,12 @@
         </nav>
     </header>
     <main>
-        <form class="container container-form" id="form">
+        <form class="container container-form" id="form" action="" method="get" autocomplete="on">
             <fieldset class="form-fieldset">
-                <legend><h3>Informations personnelles</h3></legend>
-                
+                <legend>
+                    <h3>Informations personnelles</h3>
+                </legend>
+
 
                 <div class="form-control">
                     <label for="prenom">Prénom :</label>
@@ -57,23 +60,30 @@
 
             <fieldset class="form-fieldset container">
 
-                <legend><h3>Informations de voyage</h3></legend>
+                <legend>
+                    <h3>Informations de voyage</h3>
+                </legend>
 
 
                 <div class="form-control">
-                    <label for="villeArrivee">Ville d'arrivée :</label>
+
+                    <label for="villeDepart">Ville de départ</label>
+                    <select id="villeDepart" name="villeDepat" aria-label="ville de départ">
+                        <option value="" selected disabled>Paris</option>
+                    </select>
+
+                    <label for="villeArrivee">Destination :</label>
                     <select id="villeArrivee" name="villeArrivee" aria-label="Ville d'arrivée" required>
-                        <option value="" selected disabled>--Veuillez choisir--</option>
-                        <option value="paris">Paris</option>
-                        <option value="london">Londres</option>
-                        <option value="berlin">Berlin</option>
-                        <option value="madrid">Madrid</option>
-                        <option value="rome">Rome</option>
-                        <option value="lisbon">Lisbonne</option>
-                        <option value="vienna">Vienne</option>
-                        <option value="amsterdam">Amsterdam</option>
-                        <option value="brussels">Bruxelles</option>
-                        <option value="copenhagen">Copenhague</option>
+                        <option value="" selected disabled>Choisir une destination</option>
+                        <option value="Londres">Londres</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Madrid">Madrid</option>
+                        <option value="Rome">Rome</option>
+                        <option value="Lisbonne">Lisbonne</option>
+                        <option value="Vienne">Vienne</option>
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="Bruxelles">Bruxelles</option>
+                        <option value="Copenhague">Copenhague</option>
                     </select>
                 </div>
 
@@ -85,18 +95,22 @@
                 <div class="form-control">
                     <label for="classe-voyage">Classe de voyage :</label>
                     <select id="classe-voyage" name="classe-voyage" aria-label="classe-voyage" required>
-                        <option value="" selected disabled>--Veuillez choisir--</option>
-                        <option value="economy">Economie</option>
-                        <option value="business">Affaires</option>
-                        <option value="first">Première classe</option>
+                        <option value="" selected disabled>Choisir votre classe de voyage</option>
+                        <option value="Économique">Économie</option>
+                        <option value="Affaires">Affaires</option>
+                        <option value="Première classe">Première classe</option>
                     </select>
                 </div>
             </fieldset>
 
-            <input type="submit" class="container-form" id="btnSubmit">           
+            <button type="button" class="button" id="validate-button">Obtenir votre tarification</button>
+
+            <!-- <input type="submit" class="container-form" id="btnSubmit"
+                value="Confirmer la commande" href="./paiement.html"> -->
         </form>
 
         <script src="./dist/main.js" type="module"></script>
     </main>
 </body>
+
 </html>

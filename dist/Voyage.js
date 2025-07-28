@@ -1,35 +1,40 @@
 import { data } from "./data.js";
-
 export class Voyage {
     constructor(date, destination, classe) {
         this.date = date;
         this.destination = destination;
-        this.classe = classe;
+        this.standing = classe;
+        this.standingPerks = [];
+        this.pricePerkm = 0;
+        this.totalPrice = 0;
+        this.distanceFromParis = 0;
+        this.data = data;
+        this.destinationDataLabel = '';
     }
-    // METHODE DE CALCUL DU PRIX:
-    calculPrix() {
-        let prixAuKm = 0;
-        let trajet = 0;
-        const classeChoisie = document.getElementById("classe-voyage");
-        const choixDeClasse = classeChoisie.value;
-        for (let i = 0; i < data.standing.length; i++) {
-            if (choixDeClasse === data.standing[i].value) {
-                prixAuKm = data.standing[i].pricePerKm;
-                break;
-            }
-        }
-        const villeChoisie = document.getElementById("villeArrivee");
-        let arrivee = villeChoisie.value;
+    getDestinationInfo() {
+        console.log("Destination info");
         for (let i = 0; i < data.destinations.length; i++) {
-            if (arrivee === data.destinations[i].value) {
-                trajet = data.destinations[i].distanceFromParis;
-                break;
+            if (data.destinations[i].label === this.destination) {
+                console.log(`Entrée utilisateur : ${this.destination} / Sortie tableau : ${data.destinations[i].label}`);
+                this.destinationDataLabel = data.destinations[i].label;
+                this.distanceFromParis = data.destinations[i].distanceFromParis;
             }
         }
-        if (trajet === 0 || prixAuKm === 0) {
-            throw new Error("trajet ou prixAuKm non défini");
+        console.log(`Destination info : ${this.destinationDataLabel} / ${this.distanceFromParis}`);
+    }
+    getStandingInfo() {
+        console.log('Standing info');
+        for (let i = 0; i < data.standing.length; i++) {
+            if (data.standing[i].label === this.standing) {
+                this.pricePerkm = data.standing[i].pricePerKm;
+                this.standingPerks = data.standing[i].perks;
+                console.log(`Classe : ${data.standing[i].label}`);
+            }
         }
-        const prixTotal = trajet * prixAuKm;
-        return prixTotal;
+        console.log(`Prix/km : ${this.pricePerkm} | Spécifications : ${this.standingPerks}`);
+    }
+    calculatePrice() {
+        this.totalPrice = this.pricePerkm * this.distanceFromParis;
+        console.log(`Prix total : ${this.totalPrice}`);
     }
 }

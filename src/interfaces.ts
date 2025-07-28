@@ -18,12 +18,20 @@ export interface VoyageData {
   classe: string;
   reduc: boolean;
   idVoyageur: number;
+  price: string,
 }
 
 export interface AppData {
     //data: AppData ;
     destinations: object ;
     standing: object ;
+}
+
+export interface FlighData {
+  arrival: string,
+  dateTimeLocal: string,
+  travelClass: string,
+  totalPrice: string,
 }
 
 
