@@ -3,19 +3,23 @@
 import { FlighData, VoyageData } from "./interfaces";
 import { Voyage } from "./Voyage";
 
+const body = document.querySelector('body');
+
 const urlParam = new URLSearchParams(window.location.search);
 const orderTicket = urlParam.get('id');
+let orderOBJ: FlighData;
 console.log(orderTicket);
 const orderSpcec = sessionStorage.getItem(`PDNG-${orderTicket}`);
 const priceText = document.getElementById('pendingAmount');
 if (orderSpcec && priceText) {
-    const orderOBJ = JSON.parse(orderSpcec) as FlighData;
+    orderOBJ = JSON.parse(orderSpcec) as FlighData;
     console.log(orderOBJ);
     priceText.innerText = `Reste à régler : ${orderOBJ.totalPrice} euros`;
 }
 
 const paiementForm = document.getElementById("paiementForm") as HTMLFormElement;
 
+/** Lors du clic sur le bouton submit */
 if (paiementForm) {
     paiementForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -27,7 +31,19 @@ if (paiementForm) {
             if (userStorage && journeyStorage) {
             localStorage.setItem(orderTicket, userStorage);
             localStorage.setItem(`TRVL-${orderTicket}`,journeyStorage)
-            sessionStorage.clear();
+            //sessionStorage.clear();
+
+            paiementForm.hidden = true;
+
+            const validation  = document.createElement('p');
+            validation.className = "container booking-validation";
+            validation.innerText = `Félicitation vous partez pour ${orderOBJ.arrival}`;
+            body?.appendChild(validation);
+            const displayOrderTicket = document.createElement('strong');
+            displayOrderTicket.className = "container booking-validation";
+            displayOrderTicket.innerText = `Votre numéro de ticket : ${orderTicket}`;
+            body?.appendChild(displayOrderTicket);
+
             }
         }
 

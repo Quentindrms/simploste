@@ -1,18 +1,18 @@
 import { Voyageur } from "./Voyageur.js";
 import { Voyage } from "./Voyage.js";
 let dataUser = {
-    nom: '',
-    prenom: '',
-    dateBirth: '',
-    mail: '',
-    phone: '',
-    bookingNumber: '',
+    nom: 'test',
+    prenom: 'test',
+    dateBirth: 'test',
+    mail: 'test',
+    phone: 'test',
+    bookingNumber: 'test',
 };
 let dataJourney = {
-    arrival: '',
-    dateTimeLocal: '',
-    travelClass: '',
-    totalPrice: '',
+    arrival: 'test',
+    dateTimeLocal: 'test',
+    travelClass: 'test',
+    totalPrice: 'test',
 };
 const form = document.getElementById('form');
 //const btnSubmit = document.getElementById('btnSubmit');
@@ -30,16 +30,11 @@ if (btnSubmit) {
     btnSubmit.hidden = true;
 }
 const validateButton = document.getElementById('validate-button');
-validateButton === null || validateButton === void 0 ? void 0 : validateButton.addEventListener('click', (e) => { createRecapContainer(); });
+if (validateButton) {
+    validateButton.addEventListener('click', (e) => { createRecapContainer(); });
+}
 const recapContainer = document.createElement('div');
 recapContainer.className = "form-fieldset container";
-/**if (btnSubmit) {
-    form.addEventListener('submit', (event: Event) => {
-        event.preventDefault();
-        submitForm()
-    });
-} */
-console.log("hello world");
 function submitForm(objVoyageur, objVoyage) {
     let voyageur = objVoyageur;
     let voyage = objVoyage;
@@ -50,6 +45,22 @@ function submitForm(objVoyageur, objVoyage) {
     window.location.href = `paiement.html?id=${dataUser.bookingNumber}`;
 }
 function createRecapContainer() {
+    /** Objet dataUser - données liées au client  */
+    dataUser = {
+        nom: formData.get('nom'),
+        prenom: formData.get('prenom'),
+        dateBirth: formData.get('age'),
+        mail: formData.get('email'),
+        phone: formData.get('tel'),
+        bookingNumber: '',
+    };
+    /** Objet dataJourney - données liées au voyage du client */
+    dataJourney = {
+        arrival: formData.get('villeArrivee'),
+        dateTimeLocal: formData.get('depart'),
+        travelClass: formData.get('classe-voyage'),
+        totalPrice: '',
+    };
     form.appendChild(recapContainer);
     recapContainer.appendChild(price);
     recapContainer.appendChild(departure);
@@ -69,22 +80,6 @@ function writeRecapContainer() {
     if (btnSubmit) {
         btnSubmit.hidden = false;
     }
-    /** Objet dataUser - données liées au client  */
-    dataUser = {
-        nom: formData.get('nom'),
-        prenom: formData.get('prenom'),
-        dateBirth: formData.get('age'),
-        mail: formData.get('email'),
-        phone: formData.get('tel'),
-        bookingNumber: '',
-    };
-    /** Objet dataJourney - données liées au voyage du client */
-    dataJourney = {
-        arrival: formData.get('villeArrivee'),
-        dateTimeLocal: formData.get('depart'),
-        travelClass: formData.get('classe-voyage'),
-        totalPrice: '',
-    };
     /** Actions liées à la validation du formulaire  */
     const voyageur = new Voyageur(dataUser.nom, dataUser.prenom, dataUser.mail, dataUser.phone, dataUser.dateBirth);
     dataUser.bookingNumber = voyageur.generateurCodeVoyage();

@@ -33,6 +33,11 @@ body {
     text-align: center;
 }
 
+.booking-validation{
+    text-align: center;
+    align-self: center;
+}
+
 .booking-container {
     max-width: fit-content;
     border: 2px solid #E8D600;
@@ -40,8 +45,6 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 2rem;
-
-
 }
 
 .booking{

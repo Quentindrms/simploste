@@ -4,19 +4,19 @@ import { LocalStorage } from "./localstorage.js";
 import { FlighData } from "./interfaces.js";
 
 let dataUser = {
-    nom: '',
-    prenom: '',
-    dateBirth: '',
-    mail: '',
-    phone: '',
-    bookingNumber: '',
+    nom: 'test',
+    prenom: 'test',
+    dateBirth: 'test',
+    mail: 'test',
+    phone: 'test',
+    bookingNumber: 'test',
 }
 
 let dataJourney:FlighData = {
-    arrival: '',
-    dateTimeLocal: '',
-    travelClass: '',
-    totalPrice: '',
+    arrival: 'test',
+    dateTimeLocal: 'test',
+    travelClass: 'test',
+    totalPrice: 'test',
 }
 
 const form = document.getElementById('form') as HTMLFormElement;
@@ -39,19 +39,13 @@ if (btnSubmit) {
 }
 
 const validateButton = document.getElementById('validate-button');
-validateButton?.addEventListener('click', (e: Event) => { createRecapContainer() })
+if(validateButton){
+validateButton.addEventListener('click', (e: Event) => { createRecapContainer() })
+}
+
 
 const recapContainer = document.createElement('div');
 recapContainer.className = "form-fieldset container"
-
-/**if (btnSubmit) {
-    form.addEventListener('submit', (event: Event) => {
-        event.preventDefault();
-        submitForm()
-    });
-} */
-
-console.log("hello world");
 
 function submitForm(objVoyageur: Voyageur, objVoyage: Voyage) {
 
@@ -66,6 +60,27 @@ function submitForm(objVoyageur: Voyageur, objVoyage: Voyage) {
 }
 
 function createRecapContainer() {
+
+    /** Objet dataUser - données liées au client  */
+
+        dataUser = {
+        nom: formData.get('nom') as string,
+        prenom: formData.get('prenom') as string,
+        dateBirth: formData.get('age') as string,
+        mail: formData.get('email') as string,
+        phone: formData.get('tel') as string,
+        bookingNumber: '',
+    }
+
+    /** Objet dataJourney - données liées au voyage du client */
+
+    dataJourney = {
+        arrival: formData.get('villeArrivee') as string,
+        dateTimeLocal: formData.get('depart') as string,
+        travelClass: formData.get('classe-voyage') as string,
+        totalPrice: '',
+    }
+
     form.appendChild(recapContainer);
 
     recapContainer.appendChild(price);
@@ -90,26 +105,6 @@ function writeRecapContainer() {
 
     if (btnSubmit) {
         btnSubmit.hidden = false;
-    }
-
-    /** Objet dataUser - données liées au client  */
-
-    dataUser = {
-        nom: formData.get('nom') as string,
-        prenom: formData.get('prenom') as string,
-        dateBirth: formData.get('age') as string,
-        mail: formData.get('email') as string,
-        phone: formData.get('tel') as string,
-        bookingNumber: '',
-    }
-
-    /** Objet dataJourney - données liées au voyage du client */
-
-    dataJourney = {
-        arrival: formData.get('villeArrivee') as string,
-        dateTimeLocal: formData.get('depart') as string,
-        travelClass: formData.get('classe-voyage') as string,
-        totalPrice: '',
     }
 
     /** Actions liées à la validation du formulaire  */
