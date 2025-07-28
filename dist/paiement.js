@@ -14,13 +14,22 @@ if (paiementForm) {
     paiementForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const ExtractDatas = new FormData(paiementForm);
+        if (orderTicket != null) {
+            let userStorage = sessionStorage.getItem(orderTicket);
+            let journeyStorage = orderSpcec;
+            if (userStorage && journeyStorage) {
+                localStorage.setItem(orderTicket, userStorage);
+                localStorage.setItem(`TRVL-${orderTicket}`, journeyStorage);
+                sessionStorage.clear();
+            }
+        }
         const paiementDatas = {
             cbName: ExtractDatas.get("cbName"),
             cbTypes: ExtractDatas.get("cbTypes"),
             cbNumber: ExtractDatas.get("cbNumber"),
             cbExpirationMM: ExtractDatas.get("cbExpirationMM"),
             cbExpirationYY: ExtractDatas.get("cbExpirationYY"),
-            cbSecurity: ExtractDatas.get("cbSecurity")
+            cbSecurity: ExtractDatas.get("cbSecurity"),
         };
         //console.log(paiementDatas);
         //____errors____________________
