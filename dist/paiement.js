@@ -1,16 +1,35 @@
-"use strict";
+/** Récupère les données de la commande */
+const urlParam = new URLSearchParams(window.location.search);
+const orderTicket = urlParam.get('id');
+console.log(orderTicket);
+const orderSpcec = sessionStorage.getItem(`PDNG-${orderTicket}`);
+const priceText = document.getElementById('pendingAmount');
+if (orderSpcec && priceText) {
+    const orderOBJ = JSON.parse(orderSpcec);
+    console.log(orderOBJ);
+    priceText.innerText = `Reste à régler : ${orderOBJ.totalPrice} euros`;
+}
 const paiementForm = document.getElementById("paiementForm");
 if (paiementForm) {
     paiementForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const ExtractDatas = new FormData(paiementForm);
+        if (orderTicket != null) {
+            let userStorage = sessionStorage.getItem(orderTicket);
+            let journeyStorage = orderSpcec;
+            if (userStorage && journeyStorage) {
+                localStorage.setItem(orderTicket, userStorage);
+                localStorage.setItem(`TRVL-${orderTicket}`, journeyStorage);
+                sessionStorage.clear();
+            }
+        }
         const paiementDatas = {
             cbName: ExtractDatas.get("cbName"),
             cbTypes: ExtractDatas.get("cbTypes"),
             cbNumber: ExtractDatas.get("cbNumber"),
             cbExpirationMM: ExtractDatas.get("cbExpirationMM"),
             cbExpirationYY: ExtractDatas.get("cbExpirationYY"),
-            cbSecurity: ExtractDatas.get("cbSecurity")
+            cbSecurity: ExtractDatas.get("cbSecurity"),
         };
         //console.log(paiementDatas);
         //____errors____________________
@@ -176,3 +195,6 @@ if (paiementForm) {
     // RESTE A FAIRE : 
     // Option : recap PAIEMENT (au moins 3 derniers chiffres)
 }
+export {};
+// RECAP RESA / PAIEMENT (au moins 3 derniers chiffres)
+// BOUTON REMISE A ZERO DU FORMUALIRE / HTML EN 1 ELEMENT RESET

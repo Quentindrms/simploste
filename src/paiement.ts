@@ -1,10 +1,36 @@
+/** Récupère les données de la commande */
+
+import { FlighData, VoyageData } from "./interfaces";
+import { Voyage } from "./Voyage";
+
+const urlParam = new URLSearchParams(window.location.search);
+const orderTicket = urlParam.get('id');
+console.log(orderTicket);
+const orderSpcec = sessionStorage.getItem(`PDNG-${orderTicket}`);
+const priceText = document.getElementById('pendingAmount');
+if (orderSpcec && priceText) {
+    const orderOBJ = JSON.parse(orderSpcec) as FlighData;
+    console.log(orderOBJ);
+    priceText.innerText = `Reste à régler : ${orderOBJ.totalPrice} euros`;
+}
+
 const paiementForm = document.getElementById("paiementForm") as HTMLFormElement;
 
 if (paiementForm) {
-    paiementForm.addEventListener ("submit", (event) => {
+    paiementForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const ExtractDatas = new FormData (paiementForm);
+        const ExtractDatas = new FormData(paiementForm);
+        if (orderTicket != null) {
+            let userStorage = sessionStorage.getItem(orderTicket);
+            let journeyStorage = orderSpcec;
+            if (userStorage && journeyStorage) {
+            localStorage.setItem(orderTicket, userStorage);
+            localStorage.setItem(`TRVL-${orderTicket}`,journeyStorage)
+            sessionStorage.clear();
+            }
+        }
+
 
         const paiementDatas = {
             cbName: ExtractDatas.get("cbName"),
@@ -12,7 +38,7 @@ if (paiementForm) {
             cbNumber: ExtractDatas.get("cbNumber"),
             cbExpirationMM: ExtractDatas.get("cbExpirationMM"),
             cbExpirationYY: ExtractDatas.get("cbExpirationYY"),
-            cbSecurity: ExtractDatas.get("cbSecurity")
+            cbSecurity: ExtractDatas.get("cbSecurity"),
         };
 
         //console.log(paiementDatas);
@@ -37,7 +63,6 @@ if (paiementForm) {
         //ok____errors_type carte_______________
         if (!paiementDatas.cbTypes) {
             errors.push("Vous devez sélectionner un type de paiement.");
-            
         }
         //console.log(errors);
 
@@ -118,19 +143,13 @@ if (paiementForm) {
     //----Methode Gauthier-----
         //   if (!errorContainer) {
         //     alert("erreur tableau");
-
         //  => => rentre les differentes erreurs ici.
-
         //     return
         // }
         // errorContainer.innerText = "erreur Tbx"
         // return
 
-    // }
-
-
-
-      
+    // }   
 
     //______function Luhn____________
 
@@ -170,92 +189,6 @@ function validAlgoLuhn(cbNumberLuhn:string): boolean {
   return sum % 10 === 0;
   //somme totale est un multiple de 10, numéro CB est valide
 }
-
-
-
-
-
-
-// // const cbNumberLuhn: string = []
-// function algoLuhn(cbNumberLuhn:string): boolean{
-//     const cbNumberLuhn: Number[] = []
-
-//     .lenght <13
-//     .lenght >19
-
-//     .lenght <13 || .lenght >19
-    
-// }
-// // const lunhFunct = cbNumber
-
-
-// if () {
-//     if .replace(/\D/g, '') 
-//     const .split('')
-//     let = 0
-//     .map(Number)  
-//     .reverse(); 
-    
-// }
-
-
-
-// if () {}
-// if .replace(/\D/g, '') 
-//     const .split('')
-//     let = 0
-//     .map(Number)  
-//     .reverse(); 
-
-
-
-
-
-//https://stackoverflow.com/questions/12310837/implementation-of-luhn-algorithm 
-// takes the form field value and returns true on valid number
-// function valid_credit_card(value) {
-// // accept only digits, dashes or spaces
-//     if (/[^0-9-\s]+/.test(value)) return false;
-
-// // The Luhn Algorithm. It's so pretty.
-//     var nCheck = 0, nDigit = 0, bEven = false;
-//     value = value.replace(/\D/g, "");
-
-//     for (var n = value.length - 1; n >= 0; n--) {
-//         var cDigit = value.charAt(n),
-//             nDigit = parseInt(cDigit, 10);
-
-//         if (bEven) {
-//             if ((nDigit *= 2) > 9) nDigit -= 9;
-//         }
-
-//         nCheck += nDigit;
-//         bEven = !bEven;
-//     }
-
-//     return (nCheck % 10) == 0;
-// }
-
-    
-//____algo de Luhn__Kev________
-// function X (cbNumber) {
-//     //ici intégrer algo de Lhun
-
-//     return true
-//}
-
-
-//}   
-
-
-// BOUTON REMISE A ZERO DU FORMUALIRE => "Formul'Air"
-
-
-//===========================================
-// RESTE A FAIRE : 
-
-// Option : recap PAIEMENT (au moins 3 derniers chiffres)
-
 }
 
 
