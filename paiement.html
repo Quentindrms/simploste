@@ -12,21 +12,28 @@
 </head>
 
 <body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>Formul'air</strong></li>
-        </ul>
-    </nav>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><strong><a href="./index.html" class="contrast">Formul'air</a></strong></li>
+            </ul>
+
+            <ul>
+                <li><a href="./booking.html" class="">Accéder à votre réservation</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <form class="container container-form" id="paiementForm">
             <fieldset>
                 <legend><h3>Espace de paiement sécurisé</h3></legend>
+                <div id="errorsDiv"></div>
 
                 <!-- nom propriétaire de la carte-->
                 <div class="formPaiement">
                     <label for="cbName">Titulaire de la carte bancaire</label>
-                    <input type="text" id="cbName" name="cbName" required pattern="[A-Z\s]+" title="Nom et Prénom en majuscules uniquement" minlength="3"> <!-- required -->
+                    <input type="text" id="cbName" name="cbName" required pattern="[A-Z\s]+" title="Nom et Prénom en majuscules uniquement" minlength="3"> 
 
                 </div>
 
@@ -34,7 +41,7 @@
                 <div class="formPaiement">
                     <label for="cbTypes">Sélectionnez le type de la carte de paiement</label>
                     <!-- <input type="number" id="cb_types" name="cb_types" required> -->
-                     <select name="cbTypes" id="cbTypes" aria-label="Type de carte" required>  <!-- required -->
+                     <select name="cbTypes" id="cbTypes" aria-label="Type de carte" required>  
                         <option value="" selected disabled>--Veuillez sélectionner le type de CB--</option>
                         <option value="Visa">Visa</option>
                         <option value="Mastercard">Mastercard</option>
@@ -45,14 +52,14 @@
                 <!-- numéro de carte-->
                 <div class="formPaiement">
                     <label for="cbNumber">Numéro de carte bancaire</label>
-                    <input type="text" id="cbNumber" name="cbNumber" required> <!-- required -->
+                    <input type="text" id="cbNumber" name="cbNumber" required> 
                 </div>
 
                 <!-- date d'expiration-->
                 <div class="formPaiement">
                     <!--Methode 2 : ds .html : 2 balises selecteur pour month / year => comaptible avec tous les nav dc mieux que <input type="month" .../> -->
                     <label for="cbExpirationMM">Date d'expiration</label>
-                    <select name="cbExpirationMM" id="cbExpirationMM" aria-label="month" > <!-- required -->
+                    <select name="cbExpirationMM" id="cbExpirationMM" aria-label="month" required> 
                         <option value="" selected disabled>--Mois--</option>
                         <option value="01">janvier</option>
                         <option value="02">février</option>
@@ -67,7 +74,7 @@
                         <option value="11">novembre</option>
                         <option value="12">décembre</option>
                     </select>
-                    <select name="cbExpirationYY" id="cbExpirationYY" aria-label="year" >
+                    <select name="cbExpirationYY" id="cbExpirationYY" aria-label="year" required> 
                         <option value=""selected disabled>--Année--</option>
                         <option value="25">2025</option>
                         <option value="26">2026</option>
@@ -95,7 +102,7 @@
                 <!-- code de sécurité CCV -->
                 <div class="formPaiement">
                     <label for="cbSecurity">CCV</label>
-                    <input type="text" id="cbSecurity" name="cbSecurity" required pattern="[0-9]{3}" title="3 chiffres requis"> 
+                    <input type="text" id="cbSecurity" name="cbSecurity" required pattern="[0-9]{3}" title="3 chiffres requis">  
                 </div>
             </fieldset>
 
